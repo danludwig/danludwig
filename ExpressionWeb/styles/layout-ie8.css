@@ -1,0 +1,16 @@
+﻿body{
+	width: 100%;
+	text-align:center;
+}
+body > * {
+	text-align: left;
+}
+form label.placeholder{
+	display:block;
+	padding: 5px;
+	xfont-family:Verdana, Geneva, Tahoma, sans-serif;
+	font-weight:bold;
+}
+form label.placeholder:after{
+	content:":";
+}

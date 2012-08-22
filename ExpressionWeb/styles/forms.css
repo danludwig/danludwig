@@ -1,0 +1,39 @@
+﻿input, textarea {
+	box-sizing: border-box;
+	font-size: 16px;
+	padding: 10px;
+	line-height: 120%;
+	border: solid 1px #aaa;
+	width: 100%;
+	max-width: 100%;
+}
+input[type=submit], input[type=reset], input[type=button], button {
+	width: auto;
+	font-weight:bold;
+	font-size:12px;
+	text-transform:uppercase;
+	font-family:"Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+	border-radius: 3px;
+	background-image: -webkit-linear-gradient(#ddd, #ccc);
+	cursor: pointer;
+	letter-spacing: 1px;
+	margin: 0 10px 0 0;
+}
+textarea {
+	overflow: auto;
+}
+form .field {
+	margin: 1em 0;
+}
+form label.placeholder {
+	display: none;
+}
+/* contact form */
+textarea#message {
+	max-height: 364px;
+	resize: none;
+	height: 60px;
+	transition: height 150ms;
+	-webkit-transition: height 200ms;
+	padding-bottom: 29px;
+}
