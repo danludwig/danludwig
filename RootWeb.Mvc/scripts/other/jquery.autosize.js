@@ -81,7 +81,7 @@
 					if (!active) {
 						active = true;
 
-						mirror.value = ta.value;
+						mirror.value = ta.value + '\n';
 
 						mirror.style.overflowY = ta.style.overflowY;
 

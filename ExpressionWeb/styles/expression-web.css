@@ -1,0 +1,8 @@
+﻿.body section.main {
+	width: 683px;
+}
+body > footer {
+	left: 59px;
+	bottom: 0;
+	width: 89%;
+}

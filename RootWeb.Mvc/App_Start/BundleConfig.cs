@@ -23,9 +23,26 @@ namespace RootWeb.Mvc
             bundles.Add(new ScriptBundle("~/bundles/modernizr").Include(
                         "~/Scripts/modernizr-*"));
 
-            bundles.Add(new StyleBundle("~/Content/css").Include("~/Content/reset.css", "~/Content/site.css"));
+            bundles.Add(new ScriptBundle("~/bundles/scripts").Include(
+                "~/scripts/jquery-{version}.js",
+                "~/scripts/other/jquery.autosize.js",
+                "~/scripts/other/jquery.placeholder.js",
+                "~/scripts/other/unobtrusive-data.js"
+            ));
 
-            bundles.Add(new StyleBundle("~/Content/themes/base/css").Include(
+            bundles.Add(new StyleBundle("~/styles/css").Include(
+                "~/styles/reset.css", 
+                "~/styles/generic.css", 
+                "~/styles/layout.css", 
+                "~/styles/forms.css",
+                "~/styles/contact.css"
+            ));
+
+            bundles.Add(new StyleBundle("~/styles/ie8").Include(
+                "~/styles/ie8/forms.css"
+            ));
+
+            bundles.Add(new StyleBundle("~/content/themes/base/css").Include(
                         "~/Content/themes/base/jquery.ui.core.css",
                         "~/Content/themes/base/jquery.ui.resizable.css",
                         "~/Content/themes/base/jquery.ui.selectable.css",
