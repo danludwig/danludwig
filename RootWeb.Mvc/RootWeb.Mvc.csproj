@@ -132,7 +132,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="content\site.css" />
+    <Content Include="styles\site.css" />
     <Content Include="content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
     <Content Include="content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
     <Content Include="content\themes\base\images\ui-bg_glass_55_fbf9ee_1x400.png" />
@@ -188,10 +188,10 @@
     <Content Include="content\themes\base\minified\jquery.ui.tabs.min.css" />
     <Content Include="content\themes\base\minified\jquery.ui.theme.min.css" />
     <Content Include="Global.asax" />
-    <Content Include="content\site-default.css" />
+    <Content Include="styles\site-default.css" />
     <Content Include="git.ignore" />
     <None Include="scripts\jquery-1.7.1.intellisense.js" />
-    <Content Include="content\Reset.css" />
+    <Content Include="styles\reset.css" />
     <Content Include="scripts\jquery-1.7.1.js" />
     <Content Include="scripts\jquery-1.7.1.min.js" />
     <None Include="scripts\jquery.validate-vsdoc.js" />
