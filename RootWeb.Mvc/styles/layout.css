@@ -13,55 +13,79 @@ body {
     min-height: 100%; /* needed to do full height footer*/
     font-family: Arial, Helvetica, sans-serif;
     color: #333;
+    background-image: url(body-bg-1.png);
+    background-position: center;
+    background-repeat: repeat-y;
 }
 
     body > header {
-        width: 960px;
-        margin: 0 auto 10px;
+        margin: 0 0 10px 0;
     }
 
-        body > header > ul > li {
-            float: left;
+        body > header > ul {
+            width: 960px;
+            margin: 0 auto;
         }
 
-            body > header > ul > li > a {
-                color: #666;
-                text-decoration: none;
+            body > header > ul > li {
+                float: left;
             }
 
-                body > header > ul > li > a > img {
-                    display: block;
-                    width: 120px;
-                    height: 120px;
+                body > header > ul > li > a {
+                    color: #bbb;
+                    text-decoration: none;
                 }
 
-                body > header > ul > li > a > .text {
-                    display: block;
-                    -webkit-box-sizing: border-box;
-                    -moz-box-sizing: border-box;
-                    box-sizing: border-box;
-                    text-align: center;
-                    font-size: 12px;
-                    line-height: 20px;
-                    margin: 0 0 0 1px;
-                    border: solid 1px #ccc;
-                    padding: 0;
-                    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-                    background: #ddd;
+                    body > header > ul > li > a > img {
+                        display: block;
+                        width: 120px;
+                        height: 120px;
+                    }
+
+                    body > header > ul > li > a > .text {
+                        display: block;
+                        -webkit-box-sizing: border-box;
+                        -moz-box-sizing: border-box;
+                        box-sizing: border-box;
+                        text-align: center;
+                        font-size: 12px;
+                        line-height: 20px;
+                        margin: 0;
+                        border-left-width: 0;
+                        padding: 0;
+                        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+                        background: #333;
+                        -webkit-transition: all 200ms;
+                        -moz-transition: all 200ms;
+                        -o-transition: all 200ms;
+                        transition: all 200ms;
+                    }
+
+                body > header > ul > li:first-child > a > .text {
+                    border-left-width: 1px;
                 }
 
-            body > header > ul > li:first-child > a > .text {
-                margin: 0;
-            }
+                body > header > ul > li > a:hover > .text {
+                    color: #9cf;
+                    background: #666;
+                }
 
-            body > header > ul > li > a:hover > .text {
-                color: #66f;
-            }
+        body > header > .bg-stripe {
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;
+            width: 100%;
+            height: 20px;
+            position: absolute;
+            margin-top: -20px;
+            background: #333;
+            z-index: -1;
+        }
 
 #main {
     width: 960px;
     margin: 0 auto;
-    padding-bottom: 50px; /* look out for footer height */
+    padding-bottom: 80px; /* look out for footer height */
 }
 
     #main > .content {
@@ -74,7 +98,7 @@ body {
     }
 
         #main > .content a {
-            color: #66f;
+            color: #007acc;
         }
 
             #main > .content a:hover {
@@ -84,6 +108,7 @@ body {
         #main > .content h1 {
             font-size: 26px;
             margin: 16px 0;
+            color: #007acc;
         }
 
         #main > .content p {
@@ -97,18 +122,105 @@ body {
         -moz-box-sizing: border-box;
         box-sizing: border-box;
         width: 260px;
-        height: 400px;
-        background: silver;
     }
+
+        #main > aside .content {
+            margin: 10px 0;
+        }
+
+            #main > aside .content > ul > li > a {
+                display: block;
+                margin-bottom: 1px;
+                text-decoration: none;
+                color: #ddd;
+                background-color: #007acc;
+                -moz-opacity: 0.6;
+                opacity: 0.6;
+                -webkit-transition: all 500ms;
+                -moz-transition: all 500ms;
+                -o-transition: all 500ms;
+                transition: all 500ms;
+            }
+
+                #main > aside .content > ul > li > a:hover {
+                    -moz-opacity: 1;
+                    opacity: 1;
+                }
+
+                #main > aside .content > ul > li > a.current {
+                    -webkit-transition-property: none;
+                    -moz-transition-property: none;
+                    -o-transition-property: none;
+                    transition-property: none;
+                    -moz-opacity: 1;
+                    opacity: 1;
+                    background: transparent;
+                    cursor: default;
+                }
+
+                    #main > aside .content > ul > li > a.current * {
+                        cursor: default;
+                    }
+
+                #main > aside .content > ul > li > a .arrow {
+                    display: inline-block;
+                    border: solid 20px transparent;
+                    border-right: none;
+                    border-left: solid 20px #fff;
+                    -webkit-transition: all 500ms;
+                    -moz-transition: all 500ms;
+                    -o-transition: all 500ms;
+                    transition: all 500ms;
+                }
+
+                #main > aside .content > ul > li > a:hover .arrow {
+                    border-left-color: #fe3;
+                }
+
+                #main > aside .content > ul > li > a.current .arrow {
+                    -webkit-transition-property: none;
+                    -moz-transition-property: none;
+                    -o-transition-property: none;
+                    transition-property: none;
+                    border-left-color: #0c0;
+                }
+
+                #main > aside .content > ul > li > a .text {
+                    display: inline-block;
+                    -webkit-box-sizing: border-box;
+                    -moz-box-sizing: border-box;
+                    box-sizing: border-box;
+                    width: 235px;
+                    padding: 8px 0 8px 8px;
+                    font-size: 16px;
+                    line-height: 1.5;
+                    font-weight: bold;
+                    -webkit-transition: all 500ms;
+                    -moz-transition: all 500ms;
+                    -o-transition: all 500ms;
+                    transition: all 500ms;
+                }
+
+                #main > aside .content > ul > li > a:hover .text {
+                    color: #fff;
+                }
+
+                #main > aside .content > ul > li > a.current .text {
+                    -webkit-transition-property: none;
+                    -moz-transition-property: none;
+                    -o-transition-property: none;
+                    transition-property: none;
+                    color: #333;
+                }
 
 body > footer {
     position: absolute;
-    bottom: 0;
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
-    height: 50px;
+    bottom: -2px;
+    height: 22px;
+    padding: 0;
     width: 100%;
+    background: #333;
+    z-index: -1;
 }
 
     body > footer > .content {
@@ -117,4 +229,8 @@ body > footer {
         box-sizing: border-box;
         width: 960px;
         margin: 0 auto;
+        font-size: 11px;
+        line-height: 20px;
+        color: #ddd;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
     }

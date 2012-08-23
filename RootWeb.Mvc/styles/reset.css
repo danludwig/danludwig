@@ -23,6 +23,7 @@ input, textarea {
 	font-size: 100%;
 	font: inherit;
 	vertical-align: baseline;
+    cursor: default;
 }
 /* HTML5 display-role reset for older browsers */
 article, aside, details, figcaption, figure, 
@@ -31,6 +32,9 @@ footer, header, hgroup, menu, nav, section {
 }
 body {
 	line-height: 1;
+}
+a, a * {
+    cursor: pointer;
 }
 ol, ul {
 	list-style: none;

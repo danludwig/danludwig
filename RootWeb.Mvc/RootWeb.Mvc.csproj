@@ -39,6 +39,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="LowercaseRoutesMVC">
+      <HintPath>..\packages\LowercaseRoutesMVC.1.0.3\lib\LowercaseRoutesMVC.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -156,6 +159,7 @@
     <Content Include="images\logos\nuget.png" />
     <Content Include="images\logos\stackoverflow.png" />
     <Content Include="images\logos\xbox.png" />
+    <Content Include="scripts\other\fixed-scroll.js" />
     <Content Include="scripts\other\jquery.placeholder.js" />
     <Content Include="scripts\other\jquery.placeholder.min.js" />
     <Content Include="scripts\other\unobtrusive-data.js" />
@@ -164,6 +168,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>T4MvcJs.tt</DependentUpon>
     </Content>
+    <Content Include="styles\body-bg-1.png" />
     <Content Include="styles\forms.css" />
     <Content Include="styles\generic.css" />
     <Content Include="styles\ie8\forms.css" />
@@ -243,7 +248,9 @@
     <Content Include="scripts\modernizr-2.5.3.js" />
     <Content Include="scripts\_references.js" />
     <Content Include="styles\contact.css" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -267,9 +274,12 @@
     </Content>
     <Content Include="scripts\T4MvcJs\T4MVC.tt.settings.t4" />
     <Content Include="scripts\T4MvcJs\T4MVC.source.t4" />
+    <Content Include="Views\Shared\_LayoutHeader.cshtml" />
+    <Content Include="Views\Shared\_LayoutFooter.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="images\layout\" />
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>

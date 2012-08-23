@@ -27,7 +27,9 @@ namespace RootWeb.Mvc
                 "~/scripts/jquery-{version}.js",
                 "~/scripts/other/jquery.autosize.js",
                 "~/scripts/other/jquery.placeholder.js",
-                "~/scripts/other/unobtrusive-data.js"
+                "~/scripts/other/fixed-scroll.js",
+                "~/scripts/other/unobtrusive-data.js",
+                "~/scripts/knockout-{version}.js"
             ));
 
             bundles.Add(new StyleBundle("~/styles/css").Include(

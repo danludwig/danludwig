@@ -12,71 +12,71 @@
 </head>
 <body>
     <header>
-        <ul class="group">
-            <li>
-                <a href="/">
-                    <img alt="danludwig icon" src="/images/logos/danludwig.png">
-                    <span class="text">danludwig</span>
-                </a>
-            </li>
-            <li>
-                <a href="http://github.com/danludwig" target="_blank">
-                    <img alt="github icon" src="/images/logos/github.png">
-                    <span class="text">@@github</span>
-                </a>
-            </li>
-            <li>
-                <a href="http://nuget.org/profiles/danludwig" target="_blank">
-                    <img alt="nuget icon" src="/images/logos/nuget.png">
-                    <span class="text">@@nuget</span>
-                </a>
-            </li>
-            <li>
-                <a href="http://stackoverflow.com/users/304832/danludwig" target="_blank">
-                    <img alt="stackoverflow icon" src="/images/logos/stackoverflow.png">
-                    <span class="text">@@stackoverflow</span>
-                </a>
-            </li>
-            <li>
-                <a href="http://www.linkedin.com/in/danieljonathanludwig" target="_blank">
-                    <img alt="linkedin icon" src="/images/logos/linkedin.png">
-                    <span class="text">@@linkedin</span>
-                </a>
-            </li>
-            <li>
-                <a href="http://live.xbox.com/en-US/Profile?gamertag=WeLoseItUrFault" target="_blank">
-                    <img alt="xbox icon" src="/images/logos/xbox.png">
-                    <span class="text">@@xbox</span>
-                </a>
-            </li>
-            <li>
-                <a href="http://www.facebook.com/dan.ludwig.127" target="_blank">
-                    <img alt="" src="/images/logos/facebook.png">
-                    <span class="text">@@facebook</span>
-                </a>
-            </li>
-            <li>
-                <a href="/contact">
-                    <img alt="" src="/images/logos/gmail.png">
-                    <span class="text">@@danludwig</span>
-                </a>
-            </li>
-        </ul>
+        @Html.Partial(MVC.Shared.Views._LayoutHeader)
     </header>
     <div id="main" class="group">
         <div class="content float-left">
             @RenderBody()
         </div>
-        <aside class="float-right">
-            Here is my sidebar
+        <aside class="float-right" data-static-scroll="container">
+            <div data-static-scroll="anchor"></div>
+            <div data-static-scroll="fixed">
+                <nav class="content">
+                    <ul>
+                        <li><a href="@Url.Action(MVC.Home.Index())" class="group">
+                            <div class="arrow float-left"></div>
+                            <span class="text float-left">Home</span>
+                        </a></li>
+                        <li><a href="#" class="group">
+                            <div class="arrow float-left"></div>
+                            <span class="text float-left">NGeo</span>
+                        </a></li>
+                        <li><a href="#" class="group">
+                            <div class="arrow float-left"></div>
+                            <span class="text float-left">LinkedN</span>
+                        </a></li>
+                        <li><a href="@Url.Action(MVC.Contact.Index())" class="group">
+                            <div class="arrow float-left"></div>
+                            <span class="text float-left">Contact me</span>
+                        </a></li>
+                    </ul>
+                </nav>
+            </div>
         </aside>
     </div>
     <footer>
-        <div class="content">
-            I'm not deaf, I'm just throttling you.
-        </div>
+        @Html.Partial(MVC.Shared.Views._LayoutFooter)
     </footer>
     @Scripts.Render("~/bundles/scripts")
+
+    <script type="text/javascript">
+        (function ($) {
+            // select all top-level link elements in the sidebar nav
+            $('#main > aside .content > ul > li > a').each(function () {
+                var currentClass = 'current';
+                var $a = $(this);
+                var href = $a.attr('href');
+                var path = location.href;
+                path = path.substr(path.indexOf('://') + 3);
+                path = path.substr(path.indexOf('/'));
+                if (path.indexOf('#') >= 0)
+                    path = path.substr(0, path.indexOf('#'));
+                if (href === '/') {
+                    if (path === href && !$a.hasClass(currentClass)) {
+                        $a.addClass(currentClass);
+                    }
+                }
+                else {
+                    if (path.indexOf(href) === 0 && !$a.hasClass(currentClass)) {
+                        $a.addClass(currentClass);
+                    } else if ($a.hasClass(currentClass)) {
+                        $a.removeClass(currentClass);
+                    }
+                }
+            });
+        }(jQuery));
+    </script>
+
     @RenderSection("scripts", required: false)
 </body>
 </html>
