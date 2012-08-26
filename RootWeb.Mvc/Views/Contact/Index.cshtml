@@ -1,29 +1,100 @@
 ﻿@{
     ViewBag.Title = "Contact me";
 }
-<form method="post" class="contact">
-    <section>
-        <header>
-            <h1>
-                Contact me
-            </h1>
-        </header>
-        <p>
-            Use the form below to send me an email.
-        </p>
-        <div class="field">
-            <input id="from" type="email" placeholder="From (enter your email here)" />
+<div id="slider">
+    <div class="frames">
+        <div class="current frame">
+            <form method="post" class="contact">
+                <section>
+                    <header>
+                        <h1>
+                            Contact me
+                        </h1>
+                    </header>
+                    <p>
+                        Use the form below to send me an email.
+                    </p>
+                    <div class="field">
+                        <input id="from" type="email" placeholder="From (enter your email here)" />
+                    </div>
+                    <div class="field">
+                        <input id="subject" type="text" placeholder="Subject (so whatcha want?)" />
+                    </div>
+                    <div class="field">
+                        <textarea id="message" placeholder="Message (don't worry, this box will grow as you type)" rows="1"
+                            data-autosize="true" data-autosize-mirror="autosize-message" data-autosize-append-line="true"></textarea>
+                    </div>
+                    <footer>
+                        <input type="submit" value="Send" />
+                        <a href="/">Cancel</a>
+                    </footer>
+                </section>
+            </form>
         </div>
-        <div class="field">
-            <input id="subject" type="text" placeholder="Subject (so whatcha want?)" />
+        <div class="frame">
+            <section>
+                <header>
+                    <h1>
+                        Your message will be taken under advisement
+                    </h1>
+                </header>
+                <p>
+                    Maybe I'll reply, maybe I won't. Wager accordingly.
+                </p>
+                <footer>
+                    <a href="#" id="go_back">Send another message</a>
+                </footer>
+            </section>
         </div>
-        <div class="field">
-            <textarea id="message" placeholder="Message (don't worry, this box will grow as you type)" rows="1"
-                data-autosize="true" data-autosize-mirror="autosize-message" data-autosize-append-line="true"></textarea>
-        </div>
-        <footer>
-            <input type="submit" value="Send" />
-            <a href="/">Cancel</a>
-        </footer>
-    </section>
-</form>
+    </div>
+</div>
+@section scripts
+{
+
+    <script type="text/javascript">
+
+        window.Slider = {
+            next: function () {
+                var currentClassName = 'current', // css class for the visible frame
+                    $currentFrame = $('#slider .' + currentClassName + '.frame'),
+                    $nextFrame = $currentFrame.next('.frame'),
+                    speed = 'fast';
+                
+                // when moving forward, go ahead and display the next frame since its parent's overflow will obscure it
+                $nextFrame.show();
+                
+                // animate the left margin of the current frame to slide the next frame into view
+                $currentFrame.animate({ marginLeft: '-700px' }, speed, function () {
+                    $currentFrame.hide() // after the current frame has slid to the left, hide it
+                        .css({ marginLeft: 0 }) // now that it's hidden, go ahead and put its margin back to zero
+                        .toggleClass(currentClassName); // remove the css class since this is no longer the current frame
+                    $nextFrame.toggleClass(currentClassName); // the next frame is now the current frame
+                });
+            },
+            prev: function () {
+                var currentClassName = 'current',
+                    $currentFrame = $('#slider .' + currentClassName + '.frame'),
+                    $prevFrame = $currentFrame.prev('.frame'),
+                    speed = 'fast';
+                $prevFrame.css({ marginLeft: '-700px' }) // reset the left frame to slide it in
+                    .show() // show the left frame, since its parent's overflow will obscure it
+                    .animate({ marginLeft: 0 }, speed, function () {
+                        $currentFrame.hide().toggleClass(currentClassName);
+                        $prevFrame.toggleClass(currentClassName);
+                    });
+            }
+        };
+
+        $('input[type=submit]').on('click', function (e) {
+            window.Slider.next();
+            e.preventDefault();
+            return false;
+        });
+        $('#go_back').on('click', function (e) {
+            window.Slider.prev();
+            e.preventDefault();
+            return false;
+        });
+    </script>
+
+}

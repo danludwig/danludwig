@@ -213,6 +213,22 @@ body {
                     color: #333;
                 }
 
+#slider {
+    position: relative;
+    overflow: hidden;
+}
+
+    #slider .frames {
+        width: 10000px;
+    }
+
+        #slider .frames .frame {
+            float: left;
+            width: 690px;
+            margin-right: 20px;
+        }
+
+
 body > footer {
     position: absolute;
     bottom: -2px;
