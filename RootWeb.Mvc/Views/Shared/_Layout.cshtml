@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width" />
     <title>@ViewBag.Title</title>
     @Styles.Render("~/styles/css")
-    <!--[if lte IE 8]>
-    @Styles.Render("~/styles/ie8")
+    <!--[if lt IE 9]>
+    @Styles.Render("~/styles/legacy")
     <![endif]-->
     @Scripts.Render("~/bundles/modernizr")
 </head>

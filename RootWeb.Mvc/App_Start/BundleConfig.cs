@@ -40,7 +40,7 @@ namespace RootWeb.Mvc
                 "~/styles/contact.css"
             ));
 
-            bundles.Add(new StyleBundle("~/styles/ie8").Include(
+            bundles.Add(new StyleBundle("~/styles/legacy").Include(
                 "~/styles/ie8/forms.css"
             ));
 

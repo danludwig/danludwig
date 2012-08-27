@@ -25,8 +25,8 @@
                             data-autosize="true" data-autosize-mirror="autosize-message" data-autosize-append-line="true"></textarea>
                     </div>
                     <footer>
-                        <input type="submit" value="Send" />
-                        <a href="/">Cancel</a>
+                        <a href="#/preview" class="buttonish">Preview &amp; Send</a>
+                        <a href="#/cancel" class="buttonish">Cancel</a>
                     </footer>
                 </section>
             </form>
@@ -35,14 +35,32 @@
             <section>
                 <header>
                     <h1>
-                        Your message will be taken under advisement
+                        This is what you haven't sent me yet.
+                    </h1>
+                </header>
+                <p>
+                    Read it over before sending it. Spelling counts.
+                </p>
+                    <footer>
+                        <a href="#/compose" class="buttonish">&lt;&lt; Edit</a>
+                        <a href="#/sent" class="buttonish">Send</a>
+                    </footer>
+            </section>
+        </div>
+        <div class="frame">
+            <section>
+                <header>
+                    <h1>
+                        Your input will be taken under advisement
                     </h1>
                 </header>
                 <p>
                     Maybe I'll reply, maybe I won't. Wager accordingly.
                 </p>
                 <footer>
-                    <a href="#" id="go_back">Send another message</a>
+                    <p>
+                        If you want to be annoying, <a href="#/">send me another email right now</a>.
+                    </p>
                 </footer>
             </section>
         </div>
@@ -50,7 +68,6 @@
 </div>
 @section scripts
 {
-
     <script type="text/javascript">
 
         function Slider(options) {
@@ -119,14 +136,20 @@
 
         var slider = new Slider();
 
-        $('input[type=submit]').on('click', function (e) {
+        $('a[href="#/preview"]').on('click', function (e) {
             slider.right();
-            e.preventDefault();
-            return false;
         });
-        $('#go_back').on('click', function (e) {
+        $('a[href="#/compose"]').on('click', function (e) {
             slider.left();
-            e.preventDefault();
+        });
+        $('a[href="#/sent"]').on('click', function (e) {
+            slider.right();
+        });
+        $('a[href="#/"]').on('click', function (e) {
+            slider.right(2);
+        });
+        $('a[href="#/cancel"]').on('click', function (e) {
+            history.back();
             return false;
         });
     </script>

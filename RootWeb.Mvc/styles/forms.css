@@ -29,15 +29,15 @@
 
     input[type=submit], input[type=reset], input[type=button], button {
         width: auto;
-        margin: 0 10px 0 0;
+        display: inline-block;
+        margin: 0 4px 0 0;
         -moz-border-radius: 5px;
         -webkit-border-radius: 5px;
         border-radius: 5px;
         border: solid 1px #aaa;
-        padding: 8px;
-        font-size: 12px;
-        letter-spacing: 1px;
-        font-weight: bold;
+        padding: 8px 12px;
+        font-size: 15px;
+        line-height: 1.2;
         text-transform: uppercase;
         font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
         background-image: -webkit-linear-gradient(#ddd, #ccc);
@@ -51,9 +51,31 @@
             filter: progid:DXImageTransform.Microsoft.gradient(StartColorStr='#dddddd', EndColorStr='#cccccc');
         }
 
-    input.placeholder, textarea.placeholder {
-        color: #999;
-    }
+a.buttonish {
+    width: auto;
+    display: inline-block;
+    margin: 0 4px 0 0;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+    border: solid 1px #aaa;
+    padding: 8px 12px;
+    font-size: 15px;
+    line-height: 1.2;
+    text-transform: uppercase;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    color: #000 !important;
+    text-decoration: none;
+    background-image: -webkit-linear-gradient(#ddd, #ccc);
+    background-image: -moz-linear-gradient(#ddd, #ccc);
+    background-image: linear-gradient(#ddd, #ccc);
+    cursor: pointer;
+    filter: progid:DXImageTransform.Microsoft.gradient(StartColorStr='#dddddd', EndColorStr='#cccccc');
+}
+
+input.placeholder, textarea.placeholder {
+    color: #999;
+}
 
 textarea {
     overflow: auto;

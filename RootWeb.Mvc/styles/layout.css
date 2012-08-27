@@ -94,7 +94,7 @@ body {
         box-sizing: border-box;
         width: 700px;
         margin: 0;
-        padding: 0 10px 0 0;
+        padding: 0 10px 20px 0;
     }
 
         #main > .content a {
