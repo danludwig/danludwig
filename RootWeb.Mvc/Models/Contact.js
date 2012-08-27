@@ -1,22 +1,19 @@
 ﻿function ContactViewModel() {
-    var self = this;
+    var self = this,
+        slider = new Slider({}),
+        router = new Backbone.Router({
+            routes: {
+                'preview': 'preview',
+                'compose': 'compose',
+                'sent': 'sent',
+                'reset': 'reset'
+            }
+        });
 
-    // set up router
-    var router = new Backbone.Router({
-        routes: {
-            'preview': 'preview',
-            'compose': 'compose',
-            'sent': 'sent',
-            'reset': 'reset'
-        }
-    });
     Backbone.history.start();
     location.hash = '/compose';
 
-    // set up slider
-    var slider = new Slider({
-        //speed: 'slow'
-    });
+    self.sent = ko.observable(false);
 
     self.preview = function (viewModel, e) {
         router.navigate('//preview');
@@ -31,7 +28,8 @@
     };
 
     self.send = function (viewModel, e) {
-        router.navigate('//sent');
+        self.sent(true);
+        router.navigate('//sent', { replace: true });
         e.preventDefault();
         return false;
     };
@@ -41,7 +39,7 @@
             slider.left();
         }
         else if ($('#sent').hasClass('current')) {
-            slider.left(2);
+            history.back();
         }
     });
 
@@ -58,8 +56,7 @@
         if ($('#preview').hasClass('current')) {
             slider.right();
         }
-        else if ($('#compose').hasClass('current')) {
-            slider.right(2);
-        }
     });
 }
+
+ko.applyBindings(new ContactViewModel());
