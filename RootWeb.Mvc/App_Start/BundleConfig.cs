@@ -29,10 +29,7 @@ namespace RootWeb.Mvc
                 "~/scripts/other/fixed-scroll.js",
                 "~/scripts/other/unobtrusive-data.js",
                 "~/scripts/other/slider.js",
-                "~/scripts/knockout-{version}.js"
-            ));
-
-            bundles.Add(new ScriptBundle("~/bundles/backbone").Include(
+                "~/scripts/knockout-{version}.js",
                 "~/scripts/underscore*",
                 "~/scripts/backbone*"
             ));
