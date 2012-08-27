@@ -53,45 +53,79 @@
 
     <script type="text/javascript">
 
-        window.Slider = {
-            next: function () {
-                var currentClassName = 'current', // css class for the visible frame
-                    $currentFrame = $('#slider .' + currentClassName + '.frame'),
-                    $nextFrame = $currentFrame.next('.frame'),
-                    speed = 'fast';
-                
-                // when moving forward, go ahead and display the next frame since its parent's overflow will obscure it
+        function Slider(options) {
+            var self = this;
+            options = options || {};
+            var defaults = {
+                speed: 'fast',
+                frameClass: 'frame',
+                currentFrameClass: 'current',
+                frameWidth: 700
+            };
+
+            $.extend(options, defaults);
+
+            var currentFrameSelector = '#slider .' + options.currentFrameClass + '.' + options.frameClass;
+            var otherFrameSelector = '.' + options.frameClass;
+
+            self.right = function () {
+                var $currentFrame = $(currentFrameSelector),
+                    $nextFrame = $currentFrame.next(otherFrameSelector);
+
+                // display the next/right frame since its parent's overflow will obscure it
                 $nextFrame.show();
-                
-                // animate the left margin of the current frame to slide the next frame into view
-                $currentFrame.animate({ marginLeft: '-700px' }, speed, function () {
-                    $currentFrame.hide() // after the current frame has slid to the left, hide it
-                        .css({ marginLeft: 0 }) // now that it's hidden, go ahead and put its margin back to zero
-                        .toggleClass(currentClassName); // remove the css class since this is no longer the current frame
-                    $nextFrame.toggleClass(currentClassName); // the next frame is now the current frame
+
+                // reduce the left margin of the left frame to slide the right frame into view
+                $currentFrame.animate({ marginLeft: (options.frameWidth * -1) }, options.speed, function () {
+
+                    // after the left frame has slid out of view, hide it
+                    $currentFrame.hide()
+
+                        // now that it's hidden, go ahead and put its margin back to zero
+                        .css({ marginLeft: 0 })
+
+                        // remove the css class since this is no longer the current frame
+                        .toggleClass(options.currentFrameClass);
+
+                    // the left frame is now current
+                    $nextFrame.toggleClass(options.currentFrameClass);
                 });
-            },
-            prev: function () {
-                var currentClassName = 'current',
-                    $currentFrame = $('#slider .' + currentClassName + '.frame'),
-                    $prevFrame = $currentFrame.prev('.frame'),
-                    speed = 'fast';
-                $prevFrame.css({ marginLeft: '-700px' }) // reset the left frame to slide it in
-                    .show() // show the left frame, since its parent's overflow will obscure it
-                    .animate({ marginLeft: 0 }, speed, function () {
-                        $currentFrame.hide().toggleClass(currentClassName);
-                        $prevFrame.toggleClass(currentClassName);
-                    });
-            }
-        };
+            };
+
+            self.left = function () {
+                var $currentFrame = $(currentFrameSelector),
+                    $prevFrame = $currentFrame.prev(otherFrameSelector);
+
+                // reset the left frame to a negative left margin
+                $prevFrame.css({ marginLeft: (options.frameWidth * -1) })
+
+                    // show the left frame, since its parent's overflow will obscure it
+                    .show()
+
+                        // increase the left margin of the left frame to slide it into view (pushing right)
+                        .animate({ marginLeft: 0 }, options.speed, function () {
+
+                            // after the right frame  is slid out of view, hide it
+                            $currentFrame.hide()
+
+                                // remvoe the css class since this is no longer the current frame
+                                .toggleClass(options.currentFrameClass);
+
+                            // the right frame is now current
+                            $prevFrame.toggleClass(options.currentFrameClass);
+                        });
+            };
+        }
+
+        var slider = new Slider();
 
         $('input[type=submit]').on('click', function (e) {
-            window.Slider.next();
+            slider.right();
             e.preventDefault();
             return false;
         });
         $('#go_back').on('click', function (e) {
-            window.Slider.prev();
+            slider.left();
             e.preventDefault();
             return false;
         });
