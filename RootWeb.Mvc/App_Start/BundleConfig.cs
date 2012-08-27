@@ -1,9 +1,8 @@
-﻿using System.Web;
-using System.Web.Optimization;
+﻿using System.Web.Optimization;
 
 namespace RootWeb.Mvc
 {
-    public class BundleConfig
+    public static class BundleConfig
     {
         // For more information on Bundling, visit http://go.microsoft.com/fwlink/?LinkId=254725
         public static void RegisterBundles(BundleCollection bundles)
@@ -29,7 +28,13 @@ namespace RootWeb.Mvc
                 "~/scripts/other/jquery.placeholder.js",
                 "~/scripts/other/fixed-scroll.js",
                 "~/scripts/other/unobtrusive-data.js",
+                "~/scripts/other/slider.js",
                 "~/scripts/knockout-{version}.js"
+            ));
+
+            bundles.Add(new ScriptBundle("~/bundles/backbone").Include(
+                "~/scripts/underscore*",
+                "~/scripts/backbone*"
             ));
 
             bundles.Add(new StyleBundle("~/styles/css").Include(

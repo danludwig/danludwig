@@ -159,15 +159,24 @@
     <Content Include="images\logos\nuget.png" />
     <Content Include="images\logos\stackoverflow.png" />
     <Content Include="images\logos\xbox.png" />
+    <None Include="scripts\jquery-1.7.2.intellisense.js" />
+    <Content Include="Models\Contact.js" />
+    <Content Include="scripts\backbone.js" />
+    <Content Include="scripts\backbone.min.js" />
+    <Content Include="scripts\jquery-1.7.2.js" />
+    <Content Include="scripts\jquery-1.7.2.min.js" />
     <Content Include="scripts\other\fixed-scroll.js" />
     <Content Include="scripts\other\jquery.placeholder.js" />
     <Content Include="scripts\other\jquery.placeholder.min.js" />
+    <Content Include="scripts\other\slider.js" />
     <Content Include="scripts\other\unobtrusive-data.js" />
     <Content Include="scripts\T4MvcJs\T4MvcJs.js">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>T4MvcJs.tt</DependentUpon>
     </Content>
+    <Content Include="scripts\underscore.js" />
+    <Content Include="scripts\underscore.min.js" />
     <Content Include="styles\body-bg-1.png" />
     <Content Include="styles\forms.css" />
     <Content Include="styles\generic.css" />
@@ -229,10 +238,7 @@
     <Content Include="content\themes\base\minified\jquery.ui.theme.min.css" />
     <Content Include="Global.asax" />
     <Content Include="styles\site-default.css" />
-    <None Include="scripts\jquery-1.7.1.intellisense.js" />
     <Content Include="styles\reset.css" />
-    <Content Include="scripts\jquery-1.7.1.js" />
-    <Content Include="scripts\jquery-1.7.1.min.js" />
     <None Include="scripts\jquery.validate-vsdoc.js" />
     <Content Include="scripts\jquery-ui-1.8.20.js" />
     <Content Include="scripts\jquery-ui-1.8.20.min.js" />
@@ -280,7 +286,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="images\layout\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

@@ -51,7 +51,7 @@
             filter: progid:DXImageTransform.Microsoft.gradient(StartColorStr='#dddddd', EndColorStr='#cccccc');
         }
 
-a.buttonish {
+a.button {
     width: auto;
     display: inline-block;
     margin: 0 4px 0 0;

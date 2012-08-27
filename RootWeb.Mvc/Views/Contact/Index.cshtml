@@ -3,7 +3,7 @@
 }
 <div id="slider">
     <div class="frames">
-        <div class="current frame">
+        <div class="current frame" id="compose">
             <form method="post" class="contact">
                 <section>
                     <header>
@@ -25,13 +25,18 @@
                             data-autosize="true" data-autosize-mirror="autosize-message" data-autosize-append-line="true"></textarea>
                     </div>
                     <footer>
-                        <a href="#/preview" class="buttonish">Preview &amp; Send</a>
-                        <a href="#/cancel" class="buttonish">Cancel</a>
+                        @{
+                            var cancelUrl = Request.UrlReferrer != null && Request.Url != null &&
+                                Request.UrlReferrer.AbsolutePath != Request.Url.AbsolutePath
+                                ? Request.UrlReferrer.ToString() : "/";
+                        }
+                        <a class="preview button">Preview &amp; Send</a>
+                        <a class="cancel button" href="@cancelUrl">Cancel</a>
                     </footer>
                 </section>
             </form>
         </div>
-        <div class="frame">
+        <div class="frame" id="preview">
             <section>
                 <header>
                     <h1>
@@ -41,13 +46,13 @@
                 <p>
                     Read it over before sending it. Spelling counts.
                 </p>
-                    <footer>
-                        <a href="#/compose" class="buttonish">&lt;&lt; Edit</a>
-                        <a href="#/sent" class="buttonish">Send</a>
-                    </footer>
+                <footer>
+                    <a class="compose button">&lt;&lt; Edit</a>
+                    <a class="send button">Send</a>
+                </footer>
             </section>
         </div>
-        <div class="frame">
+        <div class="frame" id="sent">
             <section>
                 <header>
                     <h1>
@@ -59,7 +64,7 @@
                 </p>
                 <footer>
                     <p>
-                        If you want to be annoying, <a href="#/">send me another email right now</a>.
+                        If you want to be annoying, <a href="@Url.Action(MVC.Contact.Index())/">send me another email right now</a>.
                     </p>
                 </footer>
             </section>
@@ -68,90 +73,82 @@
 </div>
 @section scripts
 {
+
+    @Scripts.Render("~/bundles/backbone")
+
     <script type="text/javascript">
 
-        function Slider(options) {
-            var self = this;
-            options = options || {};
-            var defaults = {
-                speed: 'fast',
-                frameClass: 'frame',
-                currentFrameClass: 'current',
-                frameWidth: 700
-            };
 
-            $.extend(options, defaults);
+        (function ($) {
+            var router = new Backbone.Router({
+                routes: {
+                    'preview': 'preview',
+                    'compose': 'compose',
+                    'sent': 'sent',
+                    'reset': 'reset'
+                }
+            });
+            Backbone.history.start();
+            location.hash = '/compose';
 
-            var currentFrameSelector = '#slider .' + options.currentFrameClass + '.' + options.frameClass;
-            var otherFrameSelector = '.' + options.frameClass;
+            var slider = new Slider({
+                //speed: 'slow'
+            });
 
-            self.right = function () {
-                var $currentFrame = $(currentFrameSelector),
-                    $nextFrame = $currentFrame.next(otherFrameSelector);
+            $('#compose .preview.button').on('click', function (e) {
+                router.navigate('//preview');
+                e.preventDefault();
+                return false;
+            });
 
-                // display the next/right frame since its parent's overflow will obscure it
-                $nextFrame.show();
+            $('#preview .compose.button').on('click', function (e) {
+                history.back();
+                e.preventDefault();
+                return false;
+            });
 
-                // reduce the left margin of the left frame to slide the right frame into view
-                $currentFrame.animate({ marginLeft: (options.frameWidth * -1) }, options.speed, function () {
+            $('#preview .send.button').on('click', function (e) {
+                router.navigate('//sent');
+                e.preventDefault();
+                return false;
+            });
 
-                    // after the left frame has slid out of view, hide it
-                    $currentFrame.hide()
+            router.on('route:compose', function () {
+                if ($('#compose').hasClass('current')) {
+                    return;
+                }
+                else if ($('#preview').hasClass('current')) {
+                    slider.left();
+                }
+                else if ($('#sent').hasClass('current')) {
+                    slider.left(2);
+                }
+            });
 
-                        // now that it's hidden, go ahead and put its margin back to zero
-                        .css({ marginLeft: 0 })
+            router.on('route:preview', function () {
+                if ($('#preview').hasClass('current')) {
+                    return;
+                }
+                else if ($('#compose').hasClass('current')) {
+                    slider.right();
+                }
+                else if ($('#sent').hasClass('current')) {
+                    this.navigate('//compose', { replace: true });
+                }
+            });
 
-                        // remove the css class since this is no longer the current frame
-                        .toggleClass(options.currentFrameClass);
-
-                    // the left frame is now current
-                    $nextFrame.toggleClass(options.currentFrameClass);
-                });
-            };
-
-            self.left = function () {
-                var $currentFrame = $(currentFrameSelector),
-                    $prevFrame = $currentFrame.prev(otherFrameSelector);
-
-                // reset the left frame to a negative left margin
-                $prevFrame.css({ marginLeft: (options.frameWidth * -1) })
-
-                    // show the left frame, since its parent's overflow will obscure it
-                    .show()
-
-                        // increase the left margin of the left frame to slide it into view (pushing right)
-                        .animate({ marginLeft: 0 }, options.speed, function () {
-
-                            // after the right frame  is slid out of view, hide it
-                            $currentFrame.hide()
-
-                                // remvoe the css class since this is no longer the current frame
-                                .toggleClass(options.currentFrameClass);
-
-                            // the right frame is now current
-                            $prevFrame.toggleClass(options.currentFrameClass);
-                        });
-            };
-        }
-
-        var slider = new Slider();
-
-        $('a[href="#/preview"]').on('click', function (e) {
-            slider.right();
-        });
-        $('a[href="#/compose"]').on('click', function (e) {
-            slider.left();
-        });
-        $('a[href="#/sent"]').on('click', function (e) {
-            slider.right();
-        });
-        $('a[href="#/"]').on('click', function (e) {
-            slider.right(2);
-        });
-        $('a[href="#/cancel"]').on('click', function (e) {
-            history.back();
-            return false;
-        });
+            router.on('route:sent', function () {
+                if ($('#sent').hasClass('current')) {
+                    return;
+                }
+                else if ($('#preview').hasClass('current')) {
+                    slider.right();
+                }
+                else if ($('#compose').hasClass('current')) {
+                    slider.right(2);
+                }
+            });
+        }(jQuery));
     </script>
 
 }
