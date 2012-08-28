@@ -20,7 +20,7 @@ body > header {
                     line-height: 20px;
                     font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
                     background: #333;
-                    @include transition-all();
+                    @include transition(all);
                 }
                 &:hover {
                     > .text {

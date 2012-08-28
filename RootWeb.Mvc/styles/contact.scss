@@ -5,5 +5,5 @@ form.contact textarea#message {
     min-height: 60px;
 	max-height: 364px;
 	resize: none;
-    @include transition-all(200ms);
+    @include transition(all, 200ms);
 }

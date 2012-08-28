@@ -11,21 +11,21 @@ $blue-vs: #007acc;
     margin: 0 auto;
 }
 
-@mixin transition-all($duration: 250ms) {
-    -webkit-transition: all $duration;
-    -moz-transition: all $duration;
-    -o-transition: all $duration;
-    transition: all $duration;
+@mixin transition($property: all, $duration: 250ms) {
+    -webkit-transition: $property $duration;
+    -moz-transition: $property $duration;
+    -o-transition: $property $duration;
+    transition: $property $duration;
 }
 
-@mixin transition-none($duration: 250ms) {
+@mixin transition-none() {
     -webkit-transition-property: none;
     -moz-transition-property: none;
     -o-transition-property: none;
     transition-property: none;
 }
 
-@mixin opacity-value($value: 1) {
+@mixin opacity($value: 1) {
     -moz-opacity: $value;
     opacity: $value;
 }
@@ -34,6 +34,12 @@ $blue-vs: #007acc;
     -moz-border-radius: $value;
     -webkit-border-radius: $value;
     border-radius: $value;
+}
+
+@mixin border-radii($topLeft: 0, $topRight: 0, $bottom: 0, $right: 0) {
+    -moz-border-radius: $topLeft $topRight $bottom $right;
+    -webkit-border-radius: $topLeft $topRight $bottom $right;
+    border-radius: $topLeft $topRight $bottom $right;
 }
 
 @mixin outline-none {

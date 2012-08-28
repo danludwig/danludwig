@@ -16,7 +16,7 @@ input[type="month"], input[type="time"],     input[type="week"], textarea {
     padding: 8px;
     @include outline-none;
     background-color: #eee;
-    @include transition-all(500ms);
+    @include transition(all, 500ms);
     cursor: text;
     &:focus {
         background: #ffe;
@@ -56,10 +56,10 @@ a.button {
     @include linear-bg-gradient(#dddddd, #cccccc);
     @include box-shadow(0, 1px, 2px, 0, #000);
     cursor: pointer;
-    @include opacity-value(0.85);
-    @include transition-all(200ms);
+    @include opacity(0.85);
+    @include transition(all, 200ms);
     &:hover {
-        @include opacity-value(1);
+        @include opacity(1);
     }
     &:active {
         @include linear-bg-gradient(#cccccc, #dddddd);
