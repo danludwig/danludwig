@@ -117,6 +117,10 @@ body {
             margin: 1em 0;
         }
 
+        #main > .content footer {
+            padding-bottom: 20px;
+        }
+
     #main > aside {
         -webkit-box-sizing: border-box;
         -moz-box-sizing: border-box;

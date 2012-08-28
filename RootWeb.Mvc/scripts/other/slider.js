@@ -13,7 +13,7 @@
     var currentFrameSelector = '#' + settings.containerId + ' .' + settings.currentFrameClass + '.' + settings.frameClass;
     var otherFrameSelector = '.' + settings.frameClass;
 
-    self.right = function (distance) {
+    self.next = function (distance) {
         var $currentFrame = $(currentFrameSelector),
             $nextFrame = $currentFrame.next(otherFrameSelector);
         distance = distance || 1;
@@ -42,7 +42,7 @@
         });
     };
 
-    self.left = function (distance) {
+    self.prev = function (distance) {
         var $currentFrame = $(currentFrameSelector),
             $prevFrame = $currentFrame.prev(otherFrameSelector);
         distance = distance || 1;
