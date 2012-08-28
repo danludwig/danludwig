@@ -8,6 +8,9 @@ var MvcJs = {
 	Home: {
 		NameConst: "Home"
 	},
+	LinkedN: {
+		NameConst: "LinkedN"
+	},
 	Shared: {
 
 	}};

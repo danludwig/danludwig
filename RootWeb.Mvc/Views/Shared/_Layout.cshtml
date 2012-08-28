@@ -11,72 +11,15 @@
     @Scripts.Render("~/bundles/modernizr")
 </head>
 <body>
-    <header>
-        @Html.Partial(MVC.Shared.Views._LayoutHeader)
-    </header>
+    @Html.Partial(MVC.Shared.Views._LayoutHeader)
     <div id="main" class="group">
         <div class="content float-left">
             @RenderBody()
         </div>
-        <aside class="float-right" data-static-scroll="container">
-            <div data-static-scroll="anchor"></div>
-            <div data-static-scroll="fixed">
-                <nav class="content">
-                    <ul>
-                        <li><a href="@Url.Action(MVC.Home.Index())" class="group">
-                            <div class="arrow float-left"></div>
-                            <span class="text float-left">Home</span>
-                        </a></li>
-                        <li><a href="#" class="group">
-                            <div class="arrow float-left"></div>
-                            <span class="text float-left">NGeo</span>
-                        </a></li>
-                        <li><a href="#" class="group">
-                            <div class="arrow float-left"></div>
-                            <span class="text float-left">LinkedN</span>
-                        </a></li>
-                        <li><a href="@Url.Action(MVC.Contact.Index())/" class="group">
-                            <div class="arrow float-left"></div>
-                            <span class="text float-left">Contact me</span>
-                        </a></li>
-                    </ul>
-                </nav>
-            </div>
-        </aside>
+        @Html.Partial(MVC.Shared.Views._LayoutNav)
     </div>
-    <footer>
-        @Html.Partial(MVC.Shared.Views._LayoutFooter)
-    </footer>
+    @Html.Partial(MVC.Shared.Views._LayoutFooter)
     @Scripts.Render("~/bundles/scripts")
-
-    <script type="text/javascript">
-        (function ($) {
-            // select all top-level link elements in the sidebar nav
-            $('#main > aside .content > ul > li > a').each(function () {
-                var currentClass = 'current';
-                var $a = $(this);
-                var href = $a.attr('href');
-                var path = location.href;
-                path = path.substr(path.indexOf('://') + 3);
-                path = path.substr(path.indexOf('/'));
-                if (path.indexOf('#') >= 0)
-                    path = path.substr(0, path.indexOf('#'));
-                if (href === '/') {
-                    if (path === href && !$a.hasClass(currentClass)) {
-                        $a.addClass(currentClass);
-                    }
-                }
-                else {
-                    if (path.indexOf(href) === 0 && !$a.hasClass(currentClass)) {
-                        $a.addClass(currentClass);
-                    } else if ($a.hasClass(currentClass)) {
-                        $a.removeClass(currentClass);
-                    }
-                }
-            });
-        }(jQuery));
-    </script>
-
     @RenderSection("scripts", required: false)
 </body>
 </html>

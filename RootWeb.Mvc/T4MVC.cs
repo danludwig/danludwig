@@ -25,6 +25,7 @@ using T4MVC;
 public static class MVC {
     public static RootWeb.Mvc.Controllers.ContactController Contact = new RootWeb.Mvc.Controllers.T4MVC_ContactController();
     public static RootWeb.Mvc.Controllers.HomeController Home = new RootWeb.Mvc.Controllers.T4MVC_HomeController();
+    public static RootWeb.Mvc.Controllers.LinkedNController LinkedN = new RootWeb.Mvc.Controllers.T4MVC_LinkedNController();
     public static T4MVC.SharedController Shared = new T4MVC.SharedController();
 }
 
@@ -487,6 +488,8 @@ namespace Links {
         public static string Url() { return T4MVCHelpers.ProcessVirtualPath(URLPATH); }
         public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(URLPATH + "/" + fileName); }
         public static readonly string Contact_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/Contact.min.js") ? Url("Contact.min.js") : Url("Contact.js");
+                      
+        public static readonly string LayoutNav_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/LayoutNav.min.js") ? Url("LayoutNav.min.js") : Url("LayoutNav.js");
                       
     }
 

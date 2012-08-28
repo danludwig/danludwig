@@ -130,10 +130,14 @@
     </Compile>
     <Compile Include="Controllers\ContactController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LinkedNController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="HomeController.generated.cs">
+      <DependentUpon>T4MVC.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LinkedNController.generated.cs">
       <DependentUpon>T4MVC.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -161,6 +165,7 @@
     <Content Include="images\logos\xbox.png" />
     <None Include="scripts\jquery-1.7.2.intellisense.js" />
     <Content Include="Models\Contact.js" />
+    <Content Include="Models\LayoutNav.js" />
     <Content Include="scripts\backbone.js" />
     <Content Include="scripts\backbone.min.js" />
     <Content Include="scripts\jquery-1.7.2.js" />
@@ -282,6 +287,8 @@
     <Content Include="scripts\T4MvcJs\T4MVC.source.t4" />
     <Content Include="Views\Shared\_LayoutHeader.cshtml" />
     <Content Include="Views\Shared\_LayoutFooter.cshtml" />
+    <Content Include="Views\LinkedN\Index.cshtml" />
+    <Content Include="Views\Shared\_LayoutNav.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

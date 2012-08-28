@@ -31,7 +31,8 @@ namespace RootWeb.Mvc
                 "~/scripts/other/slider.js",
                 "~/scripts/knockout-{version}.js",
                 "~/scripts/underscore*",
-                "~/scripts/backbone*"
+                "~/scripts/backbone*",
+                "~/models/LayoutNav.js"
             ));
 
             bundles.Add(new StyleBundle("~/styles/css").Include(

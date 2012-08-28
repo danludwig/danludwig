@@ -31,6 +31,7 @@ namespace T4MVC {
             public readonly string _Layout = "~/Views/Shared/_Layout.cshtml";
             public readonly string _LayoutFooter = "~/Views/Shared/_LayoutFooter.cshtml";
             public readonly string _LayoutHeader = "~/Views/Shared/_LayoutHeader.cshtml";
+            public readonly string _LayoutNav = "~/Views/Shared/_LayoutNav.cshtml";
             public readonly string Error = "~/Views/Shared/Error.cshtml";
         }
     }
