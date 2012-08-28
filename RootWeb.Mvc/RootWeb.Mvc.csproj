@@ -182,10 +182,13 @@
     </Content>
     <Content Include="scripts\underscore.js" />
     <Content Include="scripts\underscore.min.js" />
+    <Content Include="styles\ie8\forms.css">
+      <DependentUpon>forms.scss</DependentUpon>
+    </Content>
     <Content Include="styles\layout\body-bg-1.png" />
     <Content Include="styles\_deprecated\forms.css" />
     <Content Include="styles\_deprecated\generic.css" />
-    <Content Include="styles\ie8\forms.css" />
+    <Content Include="styles\_deprecated\ie8\forms.css" />
     <Content Include="styles\_deprecated\layout.css" />
     <Content Include="content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
     <Content Include="content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
@@ -310,6 +313,7 @@
     <Content Include="styles\reset.scss" />
     <Content Include="styles\forms.scss" />
     <Content Include="styles\contact.scss" />
+    <Content Include="styles\ie8\forms.scss" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

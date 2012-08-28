@@ -1,0 +1,7 @@
+﻿input[type=submit], input[type=reset], input[type=button], button {
+    font-weight: bold;
+}
+
+a.button {
+    font-weight: bold;
+}
