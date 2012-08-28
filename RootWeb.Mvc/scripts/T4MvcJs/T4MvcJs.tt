@@ -24,12 +24,12 @@
 <#@ import namespace="System.Web.Routing" #>
 <#@ import namespace="System.Collections.Specialized" #>
 <#@ import namespace="System.Reflection" #>
-<# // To debug, uncomment the next two lines !! 
+<# // To debug, uncomment the next two lines !!
 //System.Diagnostics.Debugger.Launch();
 //System.Diagnostics.Debugger.Break();
 #>
 <#
-PrepareDataToRender(this);  
+PrepareDataToRender(this);
 SetupRoutes();
 #>
 
@@ -41,25 +41,25 @@ var MvcJs = {
 		if (!firstMvcJsElement) {this.WriteLine(","); }
 
 		PushIndent("\t");
-		if (!string.IsNullOrEmpty(area.Name)) { 
-			
+		if (!string.IsNullOrEmpty(area.Name)) {
+
 			WriteLine("");
 			WriteLine(area.Name + ": {");
-			
+
 			var firstElement = true;
 			PushIndent("\t");
-			
+
 			RenderControllers(area.Controllers, ref firstElement);
-			
+
 			PopIndent();
 			WriteLine("");
 			WriteLine("}");
-			
-			
+
+
 		} else {
 			RenderControllers(area.Controllers, ref firstMvcJsElement);
 		}
-		
+
 		PopIndent();
 		firstMvcJsElement = false;
 	}
@@ -73,14 +73,14 @@ var MvcJs = {
 <#+
 static T4MvcJs.RoutesHandler.UrlGenerator UrlGenerator;
 string _currentAssembly = new T4MvcJs.T4Proxy().GetType().AssemblyQualifiedName.Replace("T4MvcJs.T4Proxy", "");
-	
+
 void RenderConstants(ControllerInfo controller, ref bool firstElement) {
 	var first = true;
 	var childFound = false;
 	var controllerType = System.Type.GetType(controller.FullClassName + _currentAssembly);
 	if (controllerType == null)
 		return;
-	
+
 	var controllerFields = controllerType.GetFields();
 	foreach (var field in controllerFields) {
 		if(field.IsLiteral && !field.IsInitOnly) {
@@ -129,7 +129,7 @@ void RenderActionMethods(ControllerInfo controller, ref bool firstElement) {
 		}
 
 		if (!firstElement) { this.WriteLine(","); }
-	
+
 		var jsMethodName = method.Name;
 		var jsBaseMethodName = jsMethodName;
 		var i = 1;
@@ -138,7 +138,7 @@ void RenderActionMethods(ControllerInfo controller, ref bool firstElement) {
 			i++;
 		}
 		methodNames.Add(jsMethodName);
-		
+
 		WriteLine(jsMethodName + ": function(" + parameters + ") {");
 		PushIndent("\t");
 		WriteLine("var url = \""+url+"\";");
@@ -170,7 +170,7 @@ void RenderActionNames(ControllerInfo controller, ref bool firstElement) {
 
 void RenderControllers(IEnumerable<ControllerInfo> controllers, ref bool firstElement) {
 	WriteLine("");
-	foreach (var controller in controllers) { 
+	foreach (var controller in controllers) {
 		if (!firstElement) {
 			WriteLine(",");
 		}
@@ -180,11 +180,11 @@ void RenderControllers(IEnumerable<ControllerInfo> controllers, ref bool firstEl
 
 		//WriteLine("Name: \"" + controller.Name + "\",");
 		var first = true;
-		
+
 		//RenderActionNames(controller, ref first);
 		RenderActionMethods(controller, ref first);
 		RenderConstants(controller, ref first);
-		
+
 		WriteLine("");
 		PopIndent();
 		Write("}");

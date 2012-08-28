@@ -1,4 +1,4 @@
-﻿(function ($, undefined) {
+﻿(function ($) {
     $.danludwig = $.danludwig || {
         obtruders: {},
         obtrude: function (selector, obtruders) {

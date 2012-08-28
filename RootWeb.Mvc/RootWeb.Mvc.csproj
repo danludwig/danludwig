@@ -7,19 +7,15 @@
     <ProductVersion>
     </ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{8C751C08-87BC-4746-A62F-C5589B5C98BD}</ProjectGuid>
+    <ProjectGuid>{8EDC2389-5D52-431D-95FE-A4041148F3D1}</ProjectGuid>
     <ProjectTypeGuids>{E3E379DF-F4C6-4180-9B81-6769533ABE47};{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>RootWeb.Mvc</RootNamespace>
     <AssemblyName>RootWeb.Mvc</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
     <UseIISExpress>true</UseIISExpress>
-    <IISExpressSSLPort />
-    <IISExpressAnonymousAuthentication />
-    <IISExpressWindowsAuthentication />
-    <IISExpressUseClassicPipelineMode />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -51,7 +47,6 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Data.Entity" />
     <Reference Include="System.Drawing" />
-    <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
@@ -63,26 +58,31 @@
     </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Web" />
-    <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Web.Abstractions" />
     <Reference Include="System.Web.Routing" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Configuration" />
-    <Reference Include="System.Web.Services" />
-    <Reference Include="System.EnterpriseServices" />
     <Reference Include="EntityFramework">
-      <HintPath>..\packages\EntityFramework.5.0.0\lib\net45\EntityFramework.dll</HintPath>
+      <HintPath>..\packages\EntityFramework.5.0.0\lib\net40\EntityFramework.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <Private>True</Private>
       <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
     </Reference>
     <Reference Include="System.Net.Http">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Net.Http.2.0.20710.0\lib\net40\System.Net.Http.dll</HintPath>
     </Reference>
     <Reference Include="System.Net.Http.Formatting, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.4.0.20710.0\lib\net40\System.Net.Http.Formatting.dll</HintPath>
     </Reference>
     <Reference Include="System.Net.Http.WebRequest">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Net.Http.2.0.20710.0\lib\net40\System.Net.Http.WebRequest.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Helpers, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.20710.0\lib\net40\System.Web.Helpers.dll</HintPath>
     </Reference>
     <Reference Include="System.Web.Http, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.4.0.20710.0\lib\net40\System.Web.Http.dll</HintPath>
@@ -211,6 +211,15 @@
     <Content Include="Content\themes\base\minified\jquery.ui.slider.min.css" />
     <Content Include="Content\themes\base\minified\jquery.ui.tabs.min.css" />
     <Content Include="Content\themes\base\minified\jquery.ui.theme.min.css" />
+    <Content Include="scripts\jquery-1.7.2.js" />
+    <Content Include="scripts\jquery-1.7.2.min.js" />
+    <None Include="scripts\jquery-1.8.0.intellisense.js" />
+    <Content Include="scripts\jquery-1.8.0.js" />
+    <Content Include="scripts\jquery-1.8.0.min.js" />
+    <Content Include="scripts\jquery-ui-1.8.23.js" />
+    <Content Include="scripts\jquery-ui-1.8.23.min.js" />
+    <Content Include="favicon.ico" />
+    <Content Include="Global.asax" />
     <Content Include="images\logos\danludwig.png" />
     <Content Include="images\logos\facebook.png" />
     <Content Include="images\logos\github.png" />
@@ -223,12 +232,23 @@
     <Content Include="Models\LayoutNav.js" />
     <Content Include="scripts\backbone.js" />
     <Content Include="scripts\backbone.min.js" />
-    <None Include="scripts\jquery-1.8.0.intellisense.js" />
+    <Content Include="scripts\jquery-1.8.0-vsdoc.js" />
     <Content Include="scripts\jquery-1.8.0.js" />
     <Content Include="scripts\jquery-1.8.0.min.js" />
     <Content Include="scripts\jquery-ui-1.8.23.js" />
     <Content Include="scripts\jquery-ui-1.8.23.min.js" />
+    <Content Include="scripts\jquery.unobtrusive-ajax.js" />
+    <Content Include="scripts\jquery.unobtrusive-ajax.min.js" />
+    <Content Include="scripts\jquery.validate-vsdoc.js" />
+    <Content Include="scripts\jquery.validate.js" />
+    <Content Include="scripts\jquery.validate.min.js" />
+    <Content Include="scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="scripts\knockout-2.1.0.debug.js" />
+    <Content Include="scripts\knockout-2.1.0.js" />
+    <Content Include="scripts\modernizr-2.5.3.js" />
     <Content Include="scripts\other\fixed-scroll.js" />
+    <Content Include="scripts\other\jquery.autosize.js" />
     <Content Include="scripts\other\jquery.placeholder.js" />
     <Content Include="scripts\other\jquery.placeholder.min.js" />
     <Content Include="scripts\other\slider.js" />
@@ -240,82 +260,69 @@
     </Content>
     <Content Include="scripts\underscore.js" />
     <Content Include="scripts\underscore.min.js" />
-    <Content Include="styles\ie8\forms.css">
-      <DependentUpon>forms.scss</DependentUpon>
-    </Content>
-    <Content Include="styles\layout\body-bg-1.png" />
-    <Content Include="Global.asax" />
     <Content Include="styles\contact.css">
       <DependentUpon>contact.scss</DependentUpon>
     </Content>
     <Content Include="styles\forms.css">
       <DependentUpon>forms.scss</DependentUpon>
     </Content>
+    <Content Include="styles\ie8\forms.css">
+      <DependentUpon>forms.scss</DependentUpon>
+    </Content>
     <Content Include="styles\layout.css">
       <DependentUpon>layout.scss</DependentUpon>
     </Content>
+    <Content Include="styles\layout\body-bg-1.png" />
     <Content Include="styles\reset.css">
       <DependentUpon>reset.scss</DependentUpon>
     </Content>
-    <None Include="scripts\jquery.validate-vsdoc.js" />
-    <Content Include="scripts\other\jquery.autosize.js" />
-    <Content Include="scripts\jquery.unobtrusive-ajax.js" />
-    <Content Include="scripts\jquery.unobtrusive-ajax.min.js" />
-    <Content Include="scripts\jquery.validate.js" />
-    <Content Include="scripts\jquery.validate.min.js" />
-    <Content Include="scripts\jquery.validate.unobtrusive.js" />
-    <Content Include="scripts\jquery.validate.unobtrusive.min.js" />
-    <Content Include="scripts\knockout-2.1.0.debug.js" />
-    <Content Include="scripts\knockout-2.1.0.js" />
-    <Content Include="scripts\modernizr-2.5.3.js" />
-    <Content Include="scripts\_references.js" />
-    <Content Include="Web.config">
-      <SubType>Designer</SubType>
-    </Content>
+    <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
     <Content Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
+    <Content Include="scripts\_references.js" />
     <Content Include="Views\Web.config" />
     <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Contact\Index.cshtml" />
-    <Content Include="T4MVC.tt.settings.t4" />
-    <Content Include="T4MVC.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>T4MVC.cs</LastGenOutput>
-    </Content>
-    <Content Include="scripts\T4MvcJs\T4MvcJs.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>T4MvcJs.js</LastGenOutput>
-    </Content>
-    <Content Include="scripts\T4MvcJs\T4MVC.tt.settings.t4" />
-    <Content Include="scripts\T4MvcJs\T4MVC.source.t4" />
-    <Content Include="Views\Shared\_LayoutHeader.cshtml" />
-    <Content Include="Views\Shared\_LayoutFooter.cshtml" />
-    <Content Include="Views\LinkedN\Index.cshtml" />
-    <Content Include="Views\Shared\_LayoutNav.cshtml" />
-    <Content Include="styles\layout.scss" />
-    <Content Include="styles\_bootstrap.scss" />
-    <Content Include="styles\layout\_header.scss" />
-    <Content Include="styles\layout\_footer.scss" />
-    <Content Include="styles\layout\_main-content.scss" />
-    <Content Include="styles\layout\_main-nav.scss" />
-    <Content Include="styles\reset.scss" />
-    <Content Include="styles\forms.scss" />
-    <Content Include="styles\contact.scss" />
-    <Content Include="styles\ie8\forms.scss" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="images\layout\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="scripts\T4MvcJs\T4MVC.source.t4" />
+    <None Include="scripts\T4MvcJs\T4MVC.tt.settings.t4" />
+    <None Include="scripts\T4MvcJs\T4MvcJs.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>T4MvcJs.js</LastGenOutput>
+    </None>
+    <None Include="styles\contact.scss" />
+    <None Include="styles\forms.scss" />
+    <None Include="styles\ie8\forms.scss" />
+    <None Include="styles\layout.scss" />
+    <None Include="styles\layout\_footer.scss" />
+    <None Include="styles\layout\_header.scss" />
+    <None Include="styles\layout\_main-content.scss" />
+    <None Include="styles\layout\_main-nav.scss" />
+    <None Include="styles\reset.scss" />
+    <None Include="styles\_bootstrap.scss" />
+    <None Include="T4MVC.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>T4MVC.cs</LastGenOutput>
+    </None>
+    <None Include="T4MVC.tt.settings.t4" />
+    <Content Include="Views\Contact\Index.cshtml" />
+    <Content Include="Views\LinkedN\Index.cshtml" />
+    <Content Include="Views\Shared\_LayoutFooter.cshtml" />
+    <Content Include="Views\Shared\_LayoutHeader.cshtml" />
+    <Content Include="Views\Shared\_LayoutNav.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
@@ -336,9 +343,9 @@
         <WebProjectProperties>
           <UseIIS>True</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>1261</DevelopmentServerPort>
+          <DevelopmentServerPort>52140</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:1180/</IISUrl>
+          <IISUrl>http://localhost:52140/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

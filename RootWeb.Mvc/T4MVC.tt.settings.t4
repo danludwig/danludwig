@@ -3,7 +3,7 @@
 
 This file contains settings used by T4MVC.tt. The main goal is to avoid the need for users
 to fork the 'official' template in order to achieve what they want.
- 
+
 */
 
 
@@ -87,12 +87,12 @@ readonly string[] StaticFilesFolders = new string[] {
     "Models",
 };
 
-// Static files to exclude from the generated links   
-readonly string[] ExcludedStaticFileExtensions = new string[] {   
-    ".cs"  
-};  
+// Static files to exclude from the generated links
+readonly string[] ExcludedStaticFileExtensions = new string[] {
+    ".cs"
+};
 
-//When creating links with T4MVC, it can force them to HTTPS if the action method you are linking to requires Http.  
+//When creating links with T4MVC, it can force them to HTTPS if the action method you are linking to requires Http.
 const string AttributeIndicatingHttps = "System.Web.Mvc.RequireHttpsAttribute";
 static bool GenerateSecureLinksInDebugMode = false;
 
@@ -129,7 +129,7 @@ public static class T4MVCHelpers {
     private static string ProcessVirtualPathDefault(string virtualPath) {
         // The path that comes in starts with ~/ and must first be made absolute
         string path = VirtualPathUtility.ToAbsolute(virtualPath);
-        
+
         // Add your own modifications here before returning the path
         return path;
     }
@@ -139,8 +139,8 @@ public static class T4MVCHelpers {
 
 
     // Logic to determine if the app is running in production or dev environment
-    public static bool IsProduction() { 
-        return (HttpContext.Current != null && !HttpContext.Current.IsDebuggingEnabled); 
+    public static bool IsProduction() {
+        return (HttpContext.Current != null && !HttpContext.Current.IsDebuggingEnabled);
     }
 }
 
