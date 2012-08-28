@@ -1,4 +1,7 @@
-﻿input, textarea {
+input[type="email"], input[type="number"], input[type="password"], input[type="search"],
+input[type="tel"], input[type="text"], input[type="url"], input[type="color"],
+input[type="date"], input[type="datetime"], input[type="datetime-local"],
+input[type="month"], input[type="time"], input[type="week"], textarea {
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
@@ -23,33 +26,38 @@
     cursor: text;
 }
 
-    input:focus, textarea:focus {
+    input[type="email"]:focus, input[type="number"]:focus, input[type="password"]:focus, input[type="search"]:focus,
+    input[type="tel"]:focus, input[type="text"]:focus, input[type="url"]:focus, input[type="color"]:focus,
+    input[type="date"]:focus, input[type="datetime"]:focus, input[type="datetime-local"]:focus,
+    input[type="month"]:focus, input[type="time"]:focus, input[type="week"]:focus, textarea:focus {
         background: #ffe;
     }
 
-    input[type=submit], input[type=reset], input[type=button], button {
-        width: auto;
-        display: inline-block;
-        margin: 0 8px 0 0;
-        -moz-border-radius: 5px;
-        -webkit-border-radius: 5px;
-        border-radius: 5px;
-        border: solid 1px #aaa;
-        padding: 8px 12px;
-        font-size: 15px;
-        line-height: 1.2;
-        text-transform: uppercase;
-        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-        background-image: -webkit-linear-gradient(#ddd, #ccc);
-        background-image: -moz-linear-gradient(#ddd, #ccc);
-        background-image: linear-gradient(#ddd, #ccc);
-        filter: progid:DXImageTransform.Microsoft.gradient(StartColorStr='#dddddd', EndColorStr='#cccccc');
-        cursor: pointer;
+    input[type="email"].placeholder, input[type="number"].placeholder, input[type="password"].placeholder, input[type="search"].placeholder,
+    input[type="tel"].placeholder, input[type="text"].placeholder, input[type="url"].placeholder, input[type="color"].placeholder,
+    input[type="date"].placeholder, input[type="datetime"].placeholder, input[type="datetime-local"].placeholder,
+    input[type="month"].placeholder, input[type="time"].placeholder, input[type="week"].placeholder, textarea.placeholder {
+        color: #999;
     }
 
-        input[type=submit]:focus, input[type=reset]:focus, input[type=button]:focus, button:focus {
-            filter: progid:DXImageTransform.Microsoft.gradient(StartColorStr='#dddddd', EndColorStr='#cccccc');
-        }
+input[type=submit], input[type=reset], input[type=button], button {
+    display: inline-block;
+    margin: 0 8px 0 0;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+    border: solid 1px #aaa;
+    padding: 8px 12px;
+    font-size: 15px;
+    line-height: 1.2;
+    text-transform: uppercase;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    background-image: -webkit-linear-gradient(#dddddd, #cccccc);
+    background-image: -moz-linear-gradient(#dddddd, #cccccc);
+    background-image: linear-gradient(#dddddd, #cccccc);
+    filter: progid:DXImageTransform.Microsoft.gradient(StartColorStr='#dddddd', EndColorStr='#cccccc');
+    cursor: pointer;
+}
 
 a.button {
     display: inline-block;
@@ -66,13 +74,13 @@ a.button {
     font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
     color: #000 !important;
     text-decoration: none;
-    background-image: -webkit-linear-gradient(#ddd, #ccc);
-    background-image: -moz-linear-gradient(#ddd, #ccc);
-    background-image: linear-gradient(#ddd, #ccc);
+    background-image: -webkit-linear-gradient(#dddddd, #cccccc);
+    background-image: -moz-linear-gradient(#dddddd, #cccccc);
+    background-image: linear-gradient(#dddddd, #cccccc);
     filter: progid:DXImageTransform.Microsoft.gradient(StartColorStr='#dddddd', EndColorStr='#cccccc');
-    -moz-box-shadow: 0 1px 2px 0 #000;
-    -webkit-box-shadow: 0 1px 2px 0 #000;
-    box-shadow: 0 1px 2px 0 #000;
+    -moz-box-shadow: 0 1px 2px 0 black;
+    -webkit-box-shadow: 0 1px 2px 0 black;
+    box-shadow: 0 1px 2px 0 black;
     cursor: pointer;
     -moz-opacity: 0.85;
     opacity: 0.85;
@@ -88,75 +96,72 @@ a.button {
     }
 
     a.button:active {
-        background-image: -webkit-linear-gradient(#ccc, #ddd);
-        background-image: -moz-linear-gradient(#ccc, #ddd);
-        background-image: linear-gradient(#ccc, #ddd);
+        background-image: -webkit-linear-gradient(#cccccc, #dddddd);
+        background-image: -moz-linear-gradient(#cccccc, #dddddd);
+        background-image: linear-gradient(#cccccc, #dddddd);
         filter: progid:DXImageTransform.Microsoft.gradient(StartColorStr='#cccccc', EndColorStr='#dddddd');
     }
 
-a.green.progress.button {
-    border: 0px none;
-    color: #eee !important;
-    -webkit-text-shadow: 1px 1px #333;
-    text-shadow: 1px 1px #333;
-    background-image: -webkit-linear-gradient(#0a0, #090);
-    background-image: -moz-linear-gradient(#0a0, #090);
-    background-image: linear-gradient(#0a0, #090);
-    filter: progid:DXImageTransform.Microsoft.gradient(StartColorStr='#00aa00', EndColorStr='#009900');
-}
-
-    a.green.progress.button:active {
-        color: #ee3 !important;
-        background-image: -webkit-linear-gradient(#090, #0a0);
-        background-image: -moz-linear-gradient(#090, #0a0);
-        background-image: linear-gradient(#090, #0a0);
-        filter: progid:DXImageTransform.Microsoft.gradient(StartColorStr='#009900', EndColorStr='#00aa00');
+    a.button.progress {
+        border: 0px none;
+        color: #eee !important;
+        -webkit-text-shadow: 1px 1px 0 #333333;
+        text-shadow: 1px 1px 0 #333333;
     }
 
-a.blue.progress.button {
-    border: 0px none;
-    color: #eee !important;
-    -webkit-text-shadow: 1px 1px #333;
-    text-shadow: 1px 1px #333;
-    background-image: -webkit-linear-gradient(#0093f4, #007acc);
-    background-image: -moz-linear-gradient(#0093f4, #007acc);
-    background-image: linear-gradient(#0093f4, #007acc);
-    filter: progid:DXImageTransform.Microsoft.gradient(StartColorStr='#0093f4', EndColorStr='#007acc');
-}
+        a.button.progress:active {
+            color: #ee3 !important;
+        }
 
-    a.blue.progress.button:active {
-        color: #ee3 !important;
-        background-image: -webkit-linear-gradient(#007acc, #0093f4);
-        background-image: -moz-linear-gradient(#007acc, #0093f4);
-        background-image: linear-gradient(#007acc, #0093f4);
-        filter: progid:DXImageTransform.Microsoft.gradient(StartColorStr='#007acc', EndColorStr='#0093f4');
+        a.button.progress.green {
+            background-image: -webkit-linear-gradient(#00aa00, #009900);
+            background-image: -moz-linear-gradient(#00aa00, #009900);
+            background-image: linear-gradient(#00aa00, #009900);
+            filter: progid:DXImageTransform.Microsoft.gradient(StartColorStr='#00aa00', EndColorStr='#009900');
+        }
+
+            a.button.progress.green:active {
+                background-image: -webkit-linear-gradient(#009900, #00aa00);
+                background-image: -moz-linear-gradient(#009900, #00aa00);
+                background-image: linear-gradient(#009900, #00aa00);
+                filter: progid:DXImageTransform.Microsoft.gradient(StartColorStr='#009900', EndColorStr='#00aa00');
+            }
+
+        a.button.progress.blue {
+            background-image: -webkit-linear-gradient(#0093f4, #007acc);
+            background-image: -moz-linear-gradient(#0093f4, #007acc);
+            background-image: linear-gradient(#0093f4, #007acc);
+            filter: progid:DXImageTransform.Microsoft.gradient(StartColorStr='#0093f4', EndColorStr='#007acc');
+        }
+
+            a.button.progress.blue:active {
+                background-image: -webkit-linear-gradient(#007acc, #0093f4);
+                background-image: -moz-linear-gradient(#007acc, #0093f4);
+                background-image: linear-gradient(#007acc, #0093f4);
+                filter: progid:DXImageTransform.Microsoft.gradient(StartColorStr='#007acc', EndColorStr='#0093f4');
+            }
+
+    a.button.regress {
+        border: 0px none;
+        color: #eee !important;
+        padding: 6px 10px;
+        font-size: 12px;
+        line-height: 1.25;
+        -webkit-text-shadow: 1px 1px 0 #333333;
+        text-shadow: 1px 1px 0 #333333;
+        background-image: -webkit-linear-gradient(#c02020, #ac2a2a);
+        background-image: -moz-linear-gradient(#c02020, #ac2a2a);
+        background-image: linear-gradient(#c02020, #ac2a2a);
+        filter: progid:DXImageTransform.Microsoft.gradient(StartColorStr='#c02020', EndColorStr='#ac2a2a');
     }
 
-a.regress.button {
-    border: 0px none;
-    padding: 6px 10px;
-    font-size: 12px;
-    line-height: 1.25;
-    color: #eee !important;
-    -webkit-text-shadow: 1px 1px #333;
-    text-shadow: 1px 1px #333;
-    background-image: -webkit-linear-gradient(#c02020, #ac2a2a);
-    background-image: -moz-linear-gradient(#c02020, #ac2a2a);
-    background-image: linear-gradient(#c02020, #ac2a2a);
-    filter: progid:DXImageTransform.Microsoft.gradient(StartColorStr='#c02020', EndColorStr='#ac2a2a');
-}
-
-    a.regress.button:active {
-        color: #ee3 !important;
-        background-image: -webkit-linear-gradient(#ac2a2a, #c02020);
-        background-image: -moz-linear-gradient(#ac2a2a, #c02020);
-        background-image: linear-gradient(#ac2a2a, #c02020);
-        filter: progid:DXImageTransform.Microsoft.gradient(StartColorStr='#ac2a2a', EndColorStr='#c02020');
-    }
-
-input.placeholder, textarea.placeholder {
-    color: #999;
-}
+        a.button.regress:active {
+            color: #ee3 !important;
+            background-image: -webkit-linear-gradient(#ac2a2a, #c02020);
+            background-image: -moz-linear-gradient(#ac2a2a, #c02020);
+            background-image: linear-gradient(#ac2a2a, #c02020);
+            filter: progid:DXImageTransform.Microsoft.gradient(StartColorStr='#ac2a2a', EndColorStr='#c02020');
+        }
 
 form .field {
     margin: 1em 0;
