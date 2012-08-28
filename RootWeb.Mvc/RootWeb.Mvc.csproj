@@ -186,10 +186,6 @@
       <DependentUpon>forms.scss</DependentUpon>
     </Content>
     <Content Include="styles\layout\body-bg-1.png" />
-    <Content Include="styles\_deprecated\forms.css" />
-    <Content Include="styles\_deprecated\generic.css" />
-    <Content Include="styles\_deprecated\ie8\forms.css" />
-    <Content Include="styles\_deprecated\layout.css" />
     <Content Include="content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
     <Content Include="content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
     <Content Include="content\themes\base\images\ui-bg_glass_55_fbf9ee_1x400.png" />
@@ -257,8 +253,6 @@
     <Content Include="styles\reset.css">
       <DependentUpon>reset.scss</DependentUpon>
     </Content>
-    <Content Include="styles\_deprecated\site-default.css" />
-    <Content Include="styles\_deprecated\reset.css" />
     <None Include="scripts\jquery.validate-vsdoc.js" />
     <Content Include="scripts\jquery-ui-1.8.20.js" />
     <Content Include="scripts\jquery-ui-1.8.20.min.js" />
@@ -273,7 +267,6 @@
     <Content Include="scripts\knockout-2.1.0.js" />
     <Content Include="scripts\modernizr-2.5.3.js" />
     <Content Include="scripts\_references.js" />
-    <Content Include="styles\_deprecated\contact.css" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
