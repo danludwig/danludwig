@@ -1,0 +1,59 @@
+body  #main > aside {
+    @include border-box;
+    width: 260px;
+    .content {
+        margin: 10px 0;
+        > ul > li > a {
+            display: block;
+            margin-bottom: 1px;
+            @include border-radii(0, 15px, 15px, 0);
+            text-decoration: none;
+            color: #ddd;
+            background-color: $blue-vs;
+            @include opacity(0.6);
+            @include transition(all, 500ms);
+            &:hover {
+                @include opacity(1);
+            }
+            &.current {
+                @include transition-none;
+                @include opacity(1);
+                background: #fff793;
+                cursor: default;
+                * {
+                    cursor: default;
+                }
+            }
+            .arrow {
+                display: inline-block;
+                border: solid 20px transparent;
+                border-right: none;
+                border-left: solid 20px #fff;
+                @include transition(all, 500ms);
+            }
+            &:hover .arrow {
+                border-left-color: #fe3;
+            }
+            &.current .arrow {
+                @include transition-none;
+                border-left-color: #0c0;
+            }
+            .text {
+                display: inline-block;
+                @include border-box;
+                width: 235px;
+                padding: 8px 0 8px 8px;
+                @include font-height(16px, 1.5);
+                font-weight: bold;
+                @include transition(all, 500ms);
+            }
+            &:hover .text {
+                color: #fff;
+            }
+            &.current .text {
+                @include transition-none;
+                color: #333;
+            }
+        }
+    }
+}
