@@ -10,7 +10,7 @@
         });
 
     Backbone.history.start();
-    location.hash = '/compose';
+    router.navigate('//compose', { replace: true });
 
     self.preview = function (viewModel, e) {
         router.navigate('//preview');
