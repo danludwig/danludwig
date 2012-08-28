@@ -52,7 +52,6 @@
         }
 
 a.button {
-    width: auto;
     display: inline-block;
     margin: 0 8px 0 0;
     -moz-border-radius: 5px;
@@ -94,10 +93,6 @@ a.button {
         background-image: linear-gradient(#ccc, #ddd);
         filter: progid:DXImageTransform.Microsoft.gradient(StartColorStr='#cccccc', EndColorStr='#dddddd');
     }
-
-.test {
-    background: #00B900;
-}
 
 a.green.progress.button {
     border: 0px none;
@@ -161,10 +156,6 @@ a.regress.button {
 
 input.placeholder, textarea.placeholder {
     color: #999;
-}
-
-textarea {
-    overflow: auto;
 }
 
 form .field {

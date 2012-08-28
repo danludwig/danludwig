@@ -1,0 +1,9 @@
+@import 'bootstrap';
+
+form.contact textarea#message {
+	height: 60px;
+    min-height: 60px;
+	max-height: 364px;
+	resize: none;
+    @include transition-all(200ms);
+}

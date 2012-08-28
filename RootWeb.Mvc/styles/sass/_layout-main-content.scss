@@ -1,0 +1,42 @@
+body #main {
+    @include center-margin;
+    /* look out for footer height */
+    padding-bottom: 80px;
+    > .content {
+        @include border-box;
+        width: 700px;
+        margin: 0;
+        padding: 0 10px 20px 0;
+        #slider {
+            position: relative;
+            overflow: hidden;
+            > .frames {
+                 width: 10000px;
+                 > .frame {
+                    float: left;
+                    width: 690px;
+                    margin-right: 20px;
+                 }
+            }
+        }
+        a {
+            color: $blue-vs;
+            &:hover {
+                text-decoration: none;
+            }
+        }
+        h1 {
+            margin: 16px 0;
+            font-size: 26px;
+            color: $blue-vs;
+        }
+        p {
+            line-height: 1.2;
+            font-size: 16px;
+            margin: 1em 0;
+        }
+        footer {
+            padding-bottom: 20px;
+        }
+    }
+}

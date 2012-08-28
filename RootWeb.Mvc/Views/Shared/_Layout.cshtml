@@ -16,7 +16,12 @@
         <div class="content float-left">
             @RenderBody()
         </div>
-        @Html.Partial(MVC.Shared.Views._LayoutNav)
+        <aside class="float-right" data-static-scroll="container">
+            <div data-static-scroll="anchor"></div>
+            <div data-static-scroll="fixed">
+                @Html.Partial(MVC.Shared.Views._LayoutNav)
+            </div>
+        </aside>
     </div>
     @Html.Partial(MVC.Shared.Views._LayoutFooter)
     @Scripts.Render("~/bundles/scripts")

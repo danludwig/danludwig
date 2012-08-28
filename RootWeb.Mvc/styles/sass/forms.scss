@@ -1,0 +1,103 @@
+@import 'bootstrap';
+
+input[type="email"], input[type="number"],   input[type="password"], input[type="search"],
+input[type="tel"],   input[type="text"],     input[type="url"],      input[type="color"],
+input[type="date"],  input[type="datetime"], input[type="datetime-local"],
+input[type="month"], input[type="time"],     input[type="week"], textarea {
+    @include border-box;
+    width: 100%;
+    max-width: 100%;
+    font-size: 15px;
+    line-height: 120%;
+    border: solid 1px #aaa;
+    border-right-color: #ddd;
+    border-bottom-color: #ddd;
+    @include border-radius(3px);
+    padding: 8px;
+    @include outline-none;
+    background-color: #eee;
+    @include transition-all(500ms);
+    cursor: text;
+    &:focus {
+        background: #ffe;
+    }
+    &.placeholder {
+        color: #999;
+    }
+}
+
+input[type=submit], input[type=reset], input[type=button], button {
+    display: inline-block;
+    margin: 0 8px 0 0;
+    @include border-radius(5px);
+    border: solid 1px #aaa;
+    padding: 8px 12px;
+    font-size: 15px;
+    line-height: 1.2;
+    text-transform: uppercase;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    @include linear-bg-gradient(#dddddd, #cccccc);
+    cursor: pointer;
+}
+
+
+a.button {
+    display: inline-block;
+    margin: 0 8px 0 0;
+    @include border-radius(5px);
+    border: solid 1px #aaa;
+    padding: 8px 12px;
+    vertical-align: middle;
+    @include font-height(15px, 1.2);
+    text-transform: uppercase;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    color: #000 !important;
+    text-decoration: none;
+    @include linear-bg-gradient(#dddddd, #cccccc);
+    @include box-shadow(0, 1px, 2px, 0, #000);
+    cursor: pointer;
+    @include opacity-value(0.85);
+    @include transition-all(200ms);
+    &:hover {
+        @include opacity-value(1);
+    }
+    &:active {
+        @include linear-bg-gradient(#cccccc, #dddddd);
+    }
+    &.progress {
+        border: 0px none;
+        color: #eee !important;
+        @include text-shadow(1px, 1px, 0, #333333);
+        &:active {
+            color: #ee3 !important;
+        }
+        &.green {
+            @include linear-bg-gradient(#00aa00, #009900);
+            &:active {
+                @include linear-bg-gradient(#009900, #00aa00);
+            }
+        }
+        &.blue {
+            @include linear-bg-gradient(#0093f4, #007acc);
+            &:active {
+                @include linear-bg-gradient(#007acc, #0093f4);
+            }
+        }
+    }
+    &.regress {
+        border: 0px none;
+        color: #eee !important;
+        padding: 6px 10px;
+        @include font-height(12px, 1.25);
+        @include text-shadow(1px, 1px, 0, #333333);
+        @include linear-bg-gradient(#c02020, #ac2a2a);
+        &:active {
+            color: #ee3 !important;
+        @include linear-bg-gradient(#ac2a2a, #c02020);
+        }
+    }
+}
+
+form .field {
+    margin: 1em 0;
+}

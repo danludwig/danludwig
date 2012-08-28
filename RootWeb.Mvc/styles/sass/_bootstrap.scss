@@ -1,0 +1,64 @@
+$blue-vs: #007acc;
+
+@mixin border-box {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+@mixin center-margin($width: 960px) {
+    width: $width;
+    margin: 0 auto;
+}
+
+@mixin transition-all($duration: 250ms) {
+    -webkit-transition: all $duration;
+    -moz-transition: all $duration;
+    -o-transition: all $duration;
+    transition: all $duration;
+}
+
+@mixin transition-none($duration: 250ms) {
+    -webkit-transition-property: none;
+    -moz-transition-property: none;
+    -o-transition-property: none;
+    transition-property: none;
+}
+
+@mixin opacity-value($value: 1) {
+    -moz-opacity: $value;
+    opacity: $value;
+}
+
+@mixin border-radius($value: 0) {
+    -moz-border-radius: $value;
+    -webkit-border-radius: $value;
+    border-radius: $value;
+}
+
+@mixin outline-none {
+    -moz-outline: none;
+    outline: none;
+}
+
+@mixin linear-bg-gradient($color1: #000000, $color2: #ffffff) {
+    background-image: -webkit-linear-gradient($color1, $color2);
+    background-image: -moz-linear-gradient($color1, $color2);
+    background-image: linear-gradient($color1, $color2);
+    filter: progid:DXImageTransform.Microsoft.gradient(StartColorStr='#{$color1}', EndColorStr='#{$color2}');
+}
+
+@mixin font-height($font-size: 16px, $line-height: 1.2) {
+    font-size: $font-size;
+    line-height: $line-height;
+}
+
+@mixin box-shadow($x: 1px, $y: 1px, $blur: 1px, $spread: 1px, $color: #000000) {
+    -moz-box-shadow: $x $y $blur $spread $color;
+    -webkit-box-shadow: $x $y $blur $spread $color;
+    box-shadow: $x $y $blur $spread $color;
+}
+@mixin text-shadow($x: 1px, $y: 1px, $blur: 0, $color: #000000) {
+    -webkit-text-shadow: $x $y $blur $color;
+    text-shadow: $x $y $blur $color;
+}

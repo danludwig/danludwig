@@ -1,0 +1,17 @@
+body > footer {
+    position: absolute;
+    bottom: -2px;
+    height: 22px;
+    padding: 0;
+    width: 100%;
+    background: #333;
+    z-index: -1;
+    > .content {
+        @include border-box;
+        @include center-margin;
+        font-size: 11px;
+        line-height: 20px;
+        color: #ddd;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    }
+}

@@ -182,7 +182,7 @@
     </Content>
     <Content Include="scripts\underscore.js" />
     <Content Include="scripts\underscore.min.js" />
-    <Content Include="styles\body-bg-1.png" />
+    <Content Include="styles\sass\body-bg-1.png" />
     <Content Include="styles\forms.css" />
     <Content Include="styles\generic.css" />
     <Content Include="styles\ie8\forms.css" />
@@ -242,6 +242,18 @@
     <Content Include="content\themes\base\minified\jquery.ui.tabs.min.css" />
     <Content Include="content\themes\base\minified\jquery.ui.theme.min.css" />
     <Content Include="Global.asax" />
+    <Content Include="styles\sass\contact.css">
+      <DependentUpon>contact.scss</DependentUpon>
+    </Content>
+    <Content Include="styles\sass\forms.css">
+      <DependentUpon>forms.scss</DependentUpon>
+    </Content>
+    <Content Include="styles\sass\layout.css">
+      <DependentUpon>layout.scss</DependentUpon>
+    </Content>
+    <Content Include="styles\sass\reset.css">
+      <DependentUpon>reset.scss</DependentUpon>
+    </Content>
     <Content Include="styles\site-default.css" />
     <Content Include="styles\reset.css" />
     <None Include="scripts\jquery.validate-vsdoc.js" />
@@ -289,10 +301,20 @@
     <Content Include="Views\Shared\_LayoutFooter.cshtml" />
     <Content Include="Views\LinkedN\Index.cshtml" />
     <Content Include="Views\Shared\_LayoutNav.cshtml" />
+    <Content Include="styles\sass\layout.scss" />
+    <Content Include="styles\sass\_bootstrap.scss" />
+    <Content Include="styles\sass\_layout-header.scss" />
+    <Content Include="styles\sass\_layout-footer.scss" />
+    <Content Include="styles\sass\_layout-main-content.scss" />
+    <Content Include="styles\sass\_layout-main-nav.scss" />
+    <Content Include="styles\sass\reset.scss" />
+    <Content Include="styles\sass\forms.scss" />
+    <Content Include="styles\sass\contact.scss" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="images\layout\" />
+    <Folder Include="styles\_deprecated\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

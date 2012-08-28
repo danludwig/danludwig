@@ -1,9 +1,10 @@
 ﻿form.contact textarea#message {
-	height: 60px;
+    height: 60px;
     min-height: 60px;
-	max-height: 364px;
-	resize: none;
-	-webkit-transition: all 200ms;
-	-moz-transition: all 200ms;
-	transition: all 200ms;
+    max-height: 364px;
+    resize: none;
+    -webkit-transition: all 200ms;
+    -moz-transition: all 200ms;
+    -o-transition: all 200ms;
+    transition: all 200ms;
 }

@@ -59,4 +59,4 @@
     });
 }
 
-ko.applyBindings(new ContactViewModel());
+ko.applyBindings(new ContactViewModel(), $('#main > .content')[0]);
