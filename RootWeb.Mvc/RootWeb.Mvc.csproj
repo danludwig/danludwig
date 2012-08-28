@@ -283,7 +283,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="images\layout\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
