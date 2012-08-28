@@ -36,8 +36,8 @@ namespace RootWeb.Mvc
             ));
 
             bundles.Add(new StyleBundle("~/styles/css").Include(
-                "~/styles/reset.css", 
-                "~/styles/layout.css", 
+                "~/styles/reset.css",
+                "~/styles/layout.css",
                 "~/styles/forms.css",
                 "~/styles/contact.css"
             ));

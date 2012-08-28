@@ -311,14 +311,14 @@ namespace Links {
         public static readonly string backbone_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/backbone.min.js") ? Url("backbone.min.js") : Url("backbone.js");
                       
         public static readonly string backbone_min_js = Url("backbone.min.js");
-        public static readonly string jquery_1_7_2_intellisense_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/jquery-1.7.2.intellisense.min.js") ? Url("jquery-1.7.2.intellisense.min.js") : Url("jquery-1.7.2.intellisense.js");
+        public static readonly string jquery_1_8_0_vsdoc_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/jquery-1.8.0-vsdoc.min.js") ? Url("jquery-1.8.0-vsdoc.min.js") : Url("jquery-1.8.0-vsdoc.js");
                       
-        public static readonly string jquery_1_7_2_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/jquery-1.7.2.min.js") ? Url("jquery-1.7.2.min.js") : Url("jquery-1.7.2.js");
+        public static readonly string jquery_1_8_0_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/jquery-1.8.0.min.js") ? Url("jquery-1.8.0.min.js") : Url("jquery-1.8.0.js");
                       
-        public static readonly string jquery_1_7_2_min_js = Url("jquery-1.7.2.min.js");
-        public static readonly string jquery_ui_1_8_20_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/jquery-ui-1.8.20.min.js") ? Url("jquery-ui-1.8.20.min.js") : Url("jquery-ui-1.8.20.js");
+        public static readonly string jquery_1_8_0_min_js = Url("jquery-1.8.0.min.js");
+        public static readonly string jquery_ui_1_8_23_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/jquery-ui-1.8.23.min.js") ? Url("jquery-ui-1.8.23.min.js") : Url("jquery-ui-1.8.23.js");
                       
-        public static readonly string jquery_ui_1_8_20_min_js = Url("jquery-ui-1.8.20.min.js");
+        public static readonly string jquery_ui_1_8_23_min_js = Url("jquery-ui-1.8.23.min.js");
         public static readonly string jquery_unobtrusive_ajax_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/jquery.unobtrusive-ajax.min.js") ? Url("jquery.unobtrusive-ajax.min.js") : Url("jquery.unobtrusive-ajax.js");
                       
         public static readonly string jquery_unobtrusive_ajax_min_js = Url("jquery.unobtrusive-ajax.min.js");
@@ -502,7 +502,7 @@ public static class T4MVCHelpers {
     private static string ProcessVirtualPathDefault(string virtualPath) {
         // The path that comes in starts with ~/ and must first be made absolute
         string path = VirtualPathUtility.ToAbsolute(virtualPath);
-        
+
         // Add your own modifications here before returning the path
         return path;
     }
@@ -512,8 +512,8 @@ public static class T4MVCHelpers {
 
 
     // Logic to determine if the app is running in production or dev environment
-    public static bool IsProduction() { 
-        return (HttpContext.Current != null && !HttpContext.Current.IsDebuggingEnabled); 
+    public static bool IsProduction() {
+        return (HttpContext.Current != null && !HttpContext.Current.IsDebuggingEnabled);
     }
 }
 

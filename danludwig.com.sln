@@ -1,12 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2012
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RootWeb.Mvc", "RootWeb.Mvc\RootWeb.Mvc.csproj", "{8C751C08-87BC-4746-A62F-C5589B5C98BD}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{0D58187A-991D-401A-8E2A-E3B45A7BC3F6}"
-	ProjectSection(SolutionItems) = preProject
-		.gitignore = .gitignore
-	EndProjectSection
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RootWeb.Mvc", "RootWeb.Mvc\RootWeb.Mvc.csproj", "{8EDC2389-5D52-431D-95FE-A4041148F3D1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -14,10 +9,10 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{8C751C08-87BC-4746-A62F-C5589B5C98BD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{8C751C08-87BC-4746-A62F-C5589B5C98BD}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{8C751C08-87BC-4746-A62F-C5589B5C98BD}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{8C751C08-87BC-4746-A62F-C5589B5C98BD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8EDC2389-5D52-431D-95FE-A4041148F3D1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8EDC2389-5D52-431D-95FE-A4041148F3D1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8EDC2389-5D52-431D-95FE-A4041148F3D1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8EDC2389-5D52-431D-95FE-A4041148F3D1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

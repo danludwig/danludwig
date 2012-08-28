@@ -1,5 +1,5 @@
 ﻿<#
-/* 
+/*
 	Code below is a copypaste from T4MVC: http://mvccontrib.codeplex.com/wikipage?title=T4MVC
 	with header and all the content starting from line 540.
 	Should be updated by re-copying from time to time :)
@@ -43,7 +43,7 @@ Please use in accordance to the MvcContrib license (http://mvccontrib.codeplex.c
 <# PrepareDataToRender(this); #>
 
 <#@ Include File="T4MVC.tt.settings.t4" #>
-<#+ 
+<#+
 const string ControllerSuffix = "Controller";
 
 static DTE Dte;
@@ -90,7 +90,7 @@ IDictionary<string, string> GetPartials() {
 
     foreach(var part in parts) {
         string viewName = Sanitize(part.Key);
-        
+
         // Check if we already have a partial view by that name (e.g. if two Views folders have the same ascx)
         int keyCollisionCount = partsDic.Where(m => m.Key == viewName || m.Value.Key == viewName).Count();
 
@@ -110,7 +110,7 @@ bool IsPartialView(string viewFilePath) {
     string viewFileName = Path.GetFileName(viewFilePath);
 
     if (viewFileName.EndsWith(".ascx")) return true;
-    
+
     if ((viewFileName.EndsWith(".cshtml") || viewFileName.EndsWith(".vbhtml")) && viewFileName.StartsWith("_")) {
         return true;
     }
@@ -507,12 +507,12 @@ PopIndent();
 <#+
 if (!ExcludedStaticFileExtensions.Any(extension => projectItem.Name.EndsWith(extension, StringComparison.OrdinalIgnoreCase))) {
     // if it's a non-minified javascript file
-    if (projectItem.Name.EndsWith(".js") && !projectItem.Name.EndsWith(".min.js")) { 
+    if (projectItem.Name.EndsWith(".js") && !projectItem.Name.EndsWith(".min.js")) {
         if (AddTimestampToStaticLink(projectItem)) { #>
     public static readonly string <#=Sanitize(projectItem.Name)#> = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/<#=projectItem.Name.Replace(".js", ".min.js")#>") ? Url("<#=projectItem.Name.Replace(".js", ".min.js")#>")+"?"+T4Extensions.TimestampString(URLPATH + "/<#=projectItem.Name#>") : Url("<#=projectItem.Name#>")+"?"+T4Extensions.TimestampString(URLPATH + "/<#=projectItem.Name#>");
         <#+} else {#>
     public static readonly string <#=Sanitize(projectItem.Name)#> = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/<#=projectItem.Name.Replace(".js", ".min.js")#>") ? Url("<#=projectItem.Name.Replace(".js", ".min.js")#>") : Url("<#=projectItem.Name#>");
-        <#+}  #>          
+        <#+}  #>
 <#+}
     else if (AddTimestampToStaticLink(projectItem)) { #>
     public static readonly string <#=Sanitize(projectItem.Name)#> = Url("<#=projectItem.Name#>")+"?"+T4Extensions.TimestampString(URLPATH + "/<#=projectItem.Name#>");
@@ -800,11 +800,11 @@ class ViewsFolderInfo {
     public void AddView(ProjectItem item, bool useNonQualifiedViewName) {
         string viewName = Path.GetFileName(item.Name);
         string viewFieldName = Path.GetFileNameWithoutExtension(viewName);
- 
+
         // If the simple view name is already in use, include the extension (e.g. foo_ascx instead of just foo)
         if (Views.ContainsKey(viewFieldName))
             viewFieldName = Sanitize(viewName);
- 
+
         Views[viewFieldName] = useNonQualifiedViewName ? Path.GetFileNameWithoutExtension(viewName) : GetVirtualPath(item);
     }
 
@@ -850,7 +850,7 @@ class FunctionInfo {
                         routeNameExpression = arg.Value;
                 }
             }
-            
+
             Parameters.Add(
                 new MethodParamInfo() {
                     Name = p.Name,
@@ -987,7 +987,7 @@ class Manager {
         name = Path.Combine(Path.GetDirectoryName(host.TemplateFile), name);
         generatedFileNames.Add(name);
     }
-    
+
     public void StartNewFile(String name) {
         if (name == null)
             throw new ArgumentNullException("name");
