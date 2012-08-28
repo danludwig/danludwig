@@ -89,8 +89,8 @@ body #main {
       font-size: 26px;
       color: #007acc; }
     body #main > .content p {
-      line-height: 1.2;
       font-size: 16px;
+      line-height: 1.75;
       margin: 1em 0; }
     body #main > .content footer {
       padding-bottom: 20px; }

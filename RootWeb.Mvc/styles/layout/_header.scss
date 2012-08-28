@@ -16,9 +16,8 @@ body > header {
                     display: block;
                     @include border-box;
                     text-align: center;
-                    font-size: 12px;
-                    line-height: 20px;
-                    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+                    @include font-height(12px, 20px);
+                    @include font-ms;
                     background: #333;
                     @include transition(all);
                 }

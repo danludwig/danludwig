@@ -68,3 +68,7 @@ $blue-vs: #007acc;
     -webkit-text-shadow: $x $y $blur $color;
     text-shadow: $x $y $blur $color;
 }
+
+@mixin font-ms {
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}

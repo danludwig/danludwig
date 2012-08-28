@@ -8,7 +8,7 @@ input[type="month"], input[type="time"], input[type="week"], textarea {
   width: 100%;
   max-width: 100%;
   font-size: 15px;
-  line-height: 120%;
+  line-height: 1.2;
   border: solid 1px #aaa;
   border-right-color: #ddd;
   border-bottom-color: #ddd;

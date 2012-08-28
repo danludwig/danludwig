@@ -9,9 +9,8 @@ body > footer {
     > .content {
         @include border-box;
         @include center-margin;
-        font-size: 11px;
-        line-height: 20px;
+        @include font-height(11px, 20px);
         color: #ddd;
-        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        @include font-ms;
     }
 }

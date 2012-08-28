@@ -31,8 +31,7 @@ body #main {
             color: $blue-vs;
         }
         p {
-            line-height: 1.2;
-            font-size: 16px;
+            @include font-height(16px, 1.75);
             margin: 1em 0;
         }
         footer {

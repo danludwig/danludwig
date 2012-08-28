@@ -7,8 +7,7 @@ input[type="month"], input[type="time"],     input[type="week"], textarea {
     @include border-box;
     width: 100%;
     max-width: 100%;
-    font-size: 15px;
-    line-height: 120%;
+    @include font-height(15px, 1.2);
     border: solid 1px #aaa;
     border-right-color: #ddd;
     border-bottom-color: #ddd;
@@ -32,10 +31,9 @@ input[type=submit], input[type=reset], input[type=button], button {
     @include border-radius(5px);
     border: solid 1px #aaa;
     padding: 8px 12px;
-    font-size: 15px;
-    line-height: 1.2;
+    @include font-height(15px, 1.2);
     text-transform: uppercase;
-    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    @include font-ms;
     @include linear-bg-gradient(#dddddd, #cccccc);
     cursor: pointer;
 }
@@ -50,7 +48,7 @@ a.button {
     vertical-align: middle;
     @include font-height(15px, 1.2);
     text-transform: uppercase;
-    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    @include font-ms;
     color: #000 !important;
     text-decoration: none;
     @include linear-bg-gradient(#dddddd, #cccccc);

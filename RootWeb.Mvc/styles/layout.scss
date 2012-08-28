@@ -66,8 +66,7 @@ body  #main > aside {
                 @include border-box;
                 width: 235px;
                 padding: 8px 0 8px 8px;
-                font-size: 16px;
-                line-height: 1.5;
+                @include font-height(16px, 1.5);
                 font-weight: bold;
                 @include transition(all, 500ms);
             }
