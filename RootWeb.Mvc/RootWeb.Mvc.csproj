@@ -210,13 +210,6 @@
     <Content Include="Content\themes\base\minified\jquery.ui.slider.min.css" />
     <Content Include="Content\themes\base\minified\jquery.ui.tabs.min.css" />
     <Content Include="Content\themes\base\minified\jquery.ui.theme.min.css" />
-    <Content Include="scripts\jquery-1.7.2.js" />
-    <Content Include="scripts\jquery-1.7.2.min.js" />
-    <None Include="scripts\jquery-1.8.0.intellisense.js" />
-    <Content Include="scripts\jquery-1.8.0.js" />
-    <Content Include="scripts\jquery-1.8.0.min.js" />
-    <Content Include="scripts\jquery-ui-1.8.23.js" />
-    <Content Include="scripts\jquery-ui-1.8.23.min.js" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="images\logos\danludwig.png" />
@@ -232,6 +225,7 @@
     <Content Include="scripts\backbone.js" />
     <Content Include="scripts\backbone.min.js" />
     <Content Include="scripts\jquery-1.8.0-vsdoc.js" />
+    <Content Include="scripts\jquery-1.8.0.intellisense.js" />
     <Content Include="scripts\jquery-1.8.0.js" />
     <Content Include="scripts\jquery-1.8.0.min.js" />
     <Content Include="scripts\jquery-ui-1.8.23.js" />
