@@ -1,4 +1,5 @@
 body  #main > aside {
+    float: right;
     @include border-box;
     width: 260px;
     .content {

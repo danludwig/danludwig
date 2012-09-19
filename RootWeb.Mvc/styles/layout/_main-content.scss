@@ -1,8 +1,10 @@
 body #main {
     @include center-margin;
+    @include group;
     /* look out for footer height */
     padding-bottom: 80px;
     > .content {
+        float: left;
         @include border-box;
         width: 700px;
         margin: 0;

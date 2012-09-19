@@ -1,6 +1,7 @@
 body > header {
     margin: 0 0 10px 0;
     > ul {
+        @include group;
         @include center-margin;
         > li {
             float: left;

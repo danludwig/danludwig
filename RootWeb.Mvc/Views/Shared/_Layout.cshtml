@@ -12,11 +12,11 @@
 </head>
 <body>
     @Html.Partial(MVC.Shared.Views._LayoutHeader)
-    <div id="main" class="group">
-        <div class="content float-left">
+    <div id="main">
+        <div class="content">
             @RenderBody()
         </div>
-        <aside class="float-right" data-static-scroll="container">
+        <aside data-static-scroll="container">
             <div data-static-scroll="anchor"></div>
             <div data-static-scroll="fixed">
                 @Html.Partial(MVC.Shared.Views._LayoutNav)

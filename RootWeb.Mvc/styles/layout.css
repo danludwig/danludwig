@@ -20,6 +20,9 @@ html {
 body > header {
   margin: 0 0 10px 0; }
   body > header > ul {
+    content: "";
+    clear: both;
+    display: table;
     width: 960px;
     margin: 0 auto; }
     body > header > ul > li {
@@ -62,9 +65,13 @@ body > header {
 body #main {
   width: 960px;
   margin: 0 auto;
+  content: "";
+  clear: both;
+  display: table;
   /* look out for footer height */
   padding-bottom: 80px; }
   body #main > .content {
+    float: left;
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
@@ -96,6 +103,7 @@ body #main {
       padding-bottom: 20px; }
 
 body #main > aside {
+  float: right;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
