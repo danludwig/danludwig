@@ -146,9 +146,11 @@ form .field {
   margin: 1em 0; }
 
 .error-message {
-  min-height: 50px;
-  -webkit-transition: all 500ms;
-  -moz-transition: all 500ms;
-  -o-transition: all 500ms;
-  transition: all 500ms; }
+  color: #c00;
+  display: inline-block;
+  padding: 8px 0;
+  font-family: Verdana;
+  font-size: 14px;
+  line-height: 16px;
+  font-weight: bold; }
 

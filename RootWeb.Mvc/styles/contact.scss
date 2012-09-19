@@ -10,3 +10,30 @@ form.contact textarea#message {
 form.contact textarea#message:focus {
     min-height: 80px;
 }
+#message_chars {
+    font-size: 14px;
+    font-style: italic;
+    &.invalid {
+        color: #c00;
+    }
+}
+#preview {
+    .field {
+        @include group;
+        label {
+            @include border-box;
+            display: inline-block;
+            width: 100px;
+            padding: 0 8px 0 0;
+            float: left;
+            font-weight: bold;
+            &:after {
+                content: ':';
+            }
+        }
+        .input {
+            float: left;
+            width: 590px;
+        }
+    }
+}

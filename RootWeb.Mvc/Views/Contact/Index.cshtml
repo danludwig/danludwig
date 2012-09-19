@@ -15,24 +15,37 @@
                         Use the form below to send me an email.
                     </p>
                     <div class="field">
-                        <input id="from" type="email" placeholder="From (your email)" data-bind="value: email" required />
+                        <input id="from" type="email" placeholder="From (your email)" data-bind="value: email, validationElement: email" required />
                     </div>
                     <div class="field">
-                        <input id="subject" type="text"
-                            placeholder="Subject (optional)" />
+                        <input id="subject" type="text" placeholder="Subject (optional)" data-bind="value: subject" />
                     </div>
-                    <div class="field">
-                        <textarea id="message" rows="1"
-                            placeholder="Message (what do you want)"
+                    <div class="field" data-bind="validationOptions: { insertMessages: false, decorateElement: true, errorElementClass: 'error-field' }">
+                        <textarea id="message" rows="1" placeholder="Message (what do you want)" data-bind="value: message, valueUpdate: 'afterkeydown'"
                             data-autosize="true"
                             data-autosize-mirror="autosize-message"
                             data-autosize-append-line="true"></textarea>
+                        <div id="message_chars" data-bind="css: { invalid: messageCharsOverflowed }">
+                            <div data-bind="visible: !messageCharsOverflowed()">
+                                <span data-bind="text: messageCharsRemaining">1000</span> <span data-bind="text: messageCharactersPluralizer">characters</span> left
+                            </div>
+                            <div data-bind="visible: messageCharsOverflowed">
+                                You need to remove <span data-bind="text: messageCharsRemaining() * -1"></span>
+                                <span data-bind="text: messageCharactersPluralizer">characters</span>
+                            </div>
+                        </div>
+                        <div>
+                            <span class="error-message" data-bind="validationMessage: message">Here is my error.</span>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <script type="text/javascript" src="http://www.google.com/recaptcha/api/challenge?k=6LePsdYSAAAAAOO58pkkhdwLH-3xWxWcM2-YXSQl"></script>
                     </div>
                     <footer>
                         @{
                             var cancelUrl = Request.UrlReferrer != null && Request.Url != null &&
-                                Request.UrlReferrer.AbsolutePath != Request.Url.AbsolutePath
-                                    ? Request.UrlReferrer.ToString() : "/";
+                                            Request.UrlReferrer.AbsolutePath != Request.Url.AbsolutePath
+                                                ? Request.UrlReferrer.ToString() : "/";
                         }
                         <a class="blue progress button" data-bind="click: preview">Preview &amp; Send</a>
                         <a class="regress button" href="@cancelUrl">Cancel</a>
@@ -49,6 +62,18 @@
                 </header>
                 <p>
                     Read it over first. Spelling counts.
+                </p>
+                <p class="field">
+                    <label>From</label>
+                    <span class="input"><a data-bind="text: email, attr: { href: 'mailto:' + email() }"></a></span>
+                </p>
+                <p class="field">
+                    <label>Subject</label>
+                    <span class="input"><span data-bind="text: subject() || '[none]'"></span></span>
+                </p>
+                <p class="field">
+                    <label>Message</label>
+                    <span class="input"><span data-bind="text: message"></span></span>
                 </p>
                 <footer>
                     <a class="blue progress button" data-bind="click: send">Send now</a>
@@ -78,6 +103,7 @@
 </div>
 @section scripts
 {
+
 
     <script type="text/javascript" src="~/Models/Contact.js"></script>
 

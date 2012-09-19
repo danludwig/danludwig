@@ -9,8 +9,47 @@
             }
         });
 
-    self.email = ko.observable()
-        .extend({ required: { message: 'I\'m going to need your email address.' } });
+    self.email = ko.observable('asdf@asdf.asdf')
+        .extend({
+            required: {
+                message: 'I\'m going to need your email address.'
+            },
+            email: {
+                message: 'Come on, everyone knows this is not a real email address.'
+            }
+        });
+
+    self.subject = ko.observable()
+        .extend({
+            maxLength: {
+                params: 50,
+                message: 'Tighten up your subject, it\'s too long ({0} characters max please)'
+            }
+        });
+
+    self.messageCharsMax = 1000;
+    self.message = ko.observable()
+        .extend({
+            required: {
+                message: 'Message is NOT optional.'
+            },
+            maxLength: {
+                params: 1000,
+                message: 'Tighten up your message, it\'s too long'
+            }
+        });
+    self.messageCharsRemaining = ko.computed(function () {
+        var message = self.message();
+        return message ? self.messageCharsMax - message.length : self.messageCharsMax;
+    });
+    self.messageCharsOverflowed = ko.computed(function () {
+        var remaining = self.messageCharsRemaining();
+        return remaining < 0;
+    });
+    self.messageCharactersPluralizer = ko.computed(function () {
+        var remaining = self.messageCharsRemaining();
+        return remaining == 1 || remaining == -1 ? 'character' : 'characters';
+    });
 
     Backbone.history.start();
     router.navigate('//compose', { replace: true });
@@ -74,6 +113,6 @@ ko.applyBindingsWithValidation(
         decorateElement: true,
         errorElementClass: 'error-field',
         errorMessageClass: 'error-message',
-        parseInputAttributes: true,
-        insertMessages: true
+        insertMessages: true,
+        parseInputAttributes: true
 });

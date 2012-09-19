@@ -45,7 +45,7 @@ body  #main > aside {
                         @include font-height(16px, 1.5);
                         font-weight: bold;
                         @include transition(all, 500ms);
-                        background-color: $purple-vs;
+                        background-color: $blue-vs;
                     }
                     &:hover .text {
                         color: #fff;

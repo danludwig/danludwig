@@ -105,6 +105,10 @@ form .field {
 }
 
 .error-message {
-    min-height: 50px;
-    @include transition(all, 500ms);
+    color: #c00;
+    display: inline-block;
+    padding: 8px 0;
+    font-family: Verdana;
+    @include font-height(14px, 16px);
+    font-weight: bold;
 }

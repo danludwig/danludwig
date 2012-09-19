@@ -169,7 +169,7 @@ body #main > aside {
         -moz-transition: all 500ms;
         -o-transition: all 500ms;
         transition: all 500ms;
-        background-color: #68217a; }
+        background-color: #007acc; }
       body #main > aside .content > ul > li > a:hover .text {
         color: #fff; }
       body #main > aside .content > ul > li > a.current .text {

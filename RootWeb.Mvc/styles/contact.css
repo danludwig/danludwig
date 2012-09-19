@@ -11,3 +11,28 @@ form.contact textarea#message {
 form.contact textarea#message:focus {
   min-height: 80px; }
 
+#message_chars {
+  font-size: 14px;
+  font-style: italic; }
+  #message_chars.invalid {
+    color: #c00; }
+
+#preview .field {
+  content: "";
+  clear: both;
+  display: table; }
+  #preview .field label {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    display: inline-block;
+    width: 100px;
+    padding: 0 8px 0 0;
+    float: left;
+    font-weight: bold; }
+    #preview .field label:after {
+      content: ':'; }
+  #preview .field .input {
+    float: left;
+    width: 590px; }
+
