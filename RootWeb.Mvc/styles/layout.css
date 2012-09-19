@@ -95,6 +95,10 @@ body #main {
       margin: 16px 0;
       font-size: 26px;
       color: #007acc; }
+    body #main > .content h2 {
+      margin: 16px 0;
+      font-size: 22px;
+      color: #007acc; }
     body #main > .content p {
       font-size: 16px;
       line-height: 1.75;

@@ -32,6 +32,11 @@ body #main {
             font-size: 26px;
             color: $blue-vs;
         }
+        h2 {
+            margin: 16px 0;
+            font-size: 22px;
+            color: $blue-vs;
+        }
         p {
             @include font-height(16px, 1.75);
             margin: 1em 0;

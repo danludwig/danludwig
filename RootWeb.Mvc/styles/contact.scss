@@ -23,17 +23,18 @@ form.contact textarea#message:focus {
         label {
             @include border-box;
             display: inline-block;
-            width: 100px;
-            padding: 0 8px 0 0;
+            width: 140px;
+            padding: 0 10px 0 0;
             float: left;
             font-weight: bold;
+            line-height: 1.25;
             &:after {
                 content: ':';
             }
         }
         .input {
             float: left;
-            width: 590px;
+            width: 550px;
         }
     }
 }

@@ -72,7 +72,14 @@
     };
 
     self.send = function (viewModel, e) {
-        router.navigate('//sent', { replace: true });
+        $.post('/api/contact', {
+            email: self.email(),
+            subject: self.subject(),
+        })
+        .success(function (response) {
+            alert('successful response ' + response);
+        });
+        //router.navigate('//sent', { replace: true });
         e.preventDefault();
         return false;
     };

@@ -38,9 +38,6 @@
                             <span class="error-message" data-bind="validationMessage: message">Here is my error.</span>
                         </div>
                     </div>
-                    <div class="field">
-                        <script type="text/javascript" src="http://www.google.com/recaptcha/api/challenge?k=6LePsdYSAAAAAOO58pkkhdwLH-3xWxWcM2-YXSQl"></script>
-                    </div>
                     <footer>
                         @{
                             var cancelUrl = Request.UrlReferrer != null && Request.Url != null &&
@@ -75,6 +72,10 @@
                     <label>Message</label>
                     <span class="input"><span data-bind="text: message"></span></span>
                 </p>
+                <div class="field">
+                    <label>Proof of humanity</label>
+                    <span class="input"><script type="text/javascript" src="http://www.google.com/recaptcha/api/challenge?k=6LePsdYSAAAAAOO58pkkhdwLH-3xWxWcM2-YXSQl"></script></span>
+                </div>
                 <footer>
                     <a class="blue progress button" data-bind="click: send">Send now</a>
                     <a class="regress button" data-bind="click: compose">Go back and edit</a>
