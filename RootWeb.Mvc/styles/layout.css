@@ -103,14 +103,15 @@ body #main > aside {
   body #main > aside .content {
     margin: 10px 0; }
     body #main > aside .content > ul > li > a {
-      display: block;
+      content: "";
+      clear: both;
+      display: table;
       margin-bottom: 1px;
       -moz-border-radius: 0 15px 15px 0;
       -webkit-border-radius: 0 15px 15px 0;
       border-radius: 0 15px 15px 0;
       text-decoration: none;
-      color: #ddd;
-      background-color: #007acc;
+      color: #eee;
       -moz-opacity: 0.6;
       opacity: 0.6;
       -webkit-transition: all 500ms;
@@ -127,41 +128,40 @@ body #main > aside {
         transition-property: none;
         -moz-opacity: 1;
         opacity: 1;
-        background: #fff793;
         cursor: default; }
         body #main > aside .content > ul > li > a.current * {
           cursor: default; }
       body #main > aside .content > ul > li > a .arrow {
+        float: left;
         display: inline-block;
         border: solid 20px transparent;
-        border-right: none;
-        border-left: solid 20px #fff;
+        border-left: none;
         -webkit-transition: all 500ms;
         -moz-transition: all 500ms;
         -o-transition: all 500ms;
         transition: all 500ms; }
-      body #main > aside .content > ul > li > a:hover .arrow {
-        border-left-color: #fe3; }
       body #main > aside .content > ul > li > a.current .arrow {
         -webkit-transition-property: none;
         -moz-transition-property: none;
         -o-transition-property: none;
         transition-property: none;
-        border-left-color: #0c0; }
+        border-right-color: #007acc; }
       body #main > aside .content > ul > li > a .text {
+        float: left;
         display: inline-block;
         -webkit-box-sizing: border-box;
         -moz-box-sizing: border-box;
         box-sizing: border-box;
         width: 235px;
-        padding: 8px 0 8px 8px;
+        padding: 8px 0 8px 12px;
         font-size: 16px;
         line-height: 1.5;
         font-weight: bold;
         -webkit-transition: all 500ms;
         -moz-transition: all 500ms;
         -o-transition: all 500ms;
-        transition: all 500ms; }
+        transition: all 500ms;
+        background-color: #68217a; }
       body #main > aside .content > ul > li > a:hover .text {
         color: #fff; }
       body #main > aside .content > ul > li > a.current .text {
@@ -169,7 +169,24 @@ body #main > aside {
         -moz-transition-property: none;
         -o-transition-property: none;
         transition-property: none;
-        color: #333; }
+        background-color: #007acc;
+        color: #eee; }
+    body #main > aside .content > ul > li:first-child a .text {
+      -moz-border-radius: 8px 8px 0 0;
+      -webkit-border-radius: 8px 8px 0 0;
+      border-radius: 8px 8px 0 0; }
+    body #main > aside .content > ul > li:first-child a.current .text {
+      -moz-border-radius: 0 8px 0 0;
+      -webkit-border-radius: 0 8px 0 0;
+      border-radius: 0 8px 0 0; }
+    body #main > aside .content > ul > li:last-child a .text {
+      -moz-border-radius: 0 0 8px 8px;
+      -webkit-border-radius: 0 0 8px 8px;
+      border-radius: 0 0 8px 8px; }
+    body #main > aside .content > ul > li:last-child a.current .text {
+      -moz-border-radius: 0 0 8px 0;
+      -webkit-border-radius: 0 0 8px 0;
+      border-radius: 0 0 8px 0; }
 
 body > footer {
   position: absolute;

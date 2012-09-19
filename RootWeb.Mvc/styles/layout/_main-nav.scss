@@ -3,56 +3,70 @@ body  #main > aside {
     width: 260px;
     .content {
         margin: 10px 0;
-        > ul > li > a {
-            display: block;
-            margin-bottom: 1px;
-            @include border-radii(0, 15px, 15px, 0);
-            text-decoration: none;
-            color: #ddd;
-            background-color: $blue-vs;
-            @include opacity(0.6);
-            @include transition(all, 500ms);
-            &:hover {
-                @include opacity(1);
-            }
-            &.current {
-                @include transition-none;
-                @include opacity(1);
-                background: #fff793;
-                cursor: default;
-                * {
-                    cursor: default;
+        > ul {
+            > li {
+                > a {
+                    @include group;
+                    margin-bottom: 1px;
+                    @include border-radius(0 15px 15px 0);
+                    text-decoration: none;
+                    color: #eee;
+                    @include opacity(0.6);
+                    @include transition(all, 500ms);
+                    &:hover {
+                        @include opacity(1);
+                    }
+                    &.current {
+                        @include transition-none;
+                        @include opacity(1);
+                        cursor: default;
+                        * {
+                            cursor: default;
+                        }
+                    }
+                    .arrow {
+                        float: left;
+                        display: inline-block;
+                        border: solid 20px transparent;
+                        border-left: none;
+                        @include transition(all, 500ms);
+                    }
+                    &.current .arrow {
+                        @include transition-none;
+                        border-right-color: $blue-vs;
+                    }
+                    .text {
+                        float: left;
+                        display: inline-block;
+                        @include border-box;
+                        width: 235px;
+                        padding: 8px 0 8px 12px;
+                        @include font-height(16px, 1.5);
+                        font-weight: bold;
+                        @include transition(all, 500ms);
+                        background-color: $purple-vs;
+                    }
+                    &:hover .text {
+                        color: #fff;
+                    }
+                    &.current .text {
+                        @include transition-none;
+                        background-color: $blue-vs;
+                        color: #eee;
+                    }
                 }
-            }
-            .arrow {
-                display: inline-block;
-                border: solid 20px transparent;
-                border-right: none;
-                border-left: solid 20px #fff;
-                @include transition(all, 500ms);
-            }
-            &:hover .arrow {
-                border-left-color: #fe3;
-            }
-            &.current .arrow {
-                @include transition-none;
-                border-left-color: #0c0;
-            }
-            .text {
-                display: inline-block;
-                @include border-box;
-                width: 235px;
-                padding: 8px 0 8px 8px;
-                @include font-height(16px, 1.5);
-                font-weight: bold;
-                @include transition(all, 500ms);
-            }
-            &:hover .text {
-                color: #fff;
-            }
-            &.current .text {
-                @include transition-none;
-                color: #333;
+                &:first-child a .text {
+                    @include border-radius(8px 8px 0 0);
+                }
+                &:first-child a.current .text {
+                    @include border-radius(0 8px 0 0);
+                }
+                &:last-child a .text {
+                    @include border-radius(0 0 8px 8px);
+                }
+                &:last-child a.current .text {
+                    @include border-radius(0 0 8px 0);
+                }
             }
         }
     }

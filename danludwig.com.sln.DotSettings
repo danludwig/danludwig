@@ -8,6 +8,7 @@
 	<s:Boolean x:Key="/Default/CodeEditing/Intellisense/CodeCompletion/IntellisenseEnabled/IntellisenseEnabledSettingMSBuild/IntellisenseEnabled/@EntryValue">True</s:Boolean>
 	<s:Boolean x:Key="/Default/CodeEditing/Intellisense/CodeCompletion/IntellisenseEnabled/IntellisenseEnabledSettingNAnt/IntellisenseEnabled/@EntryValue">True</s:Boolean>
 	<s:String x:Key="/Default/CodeEditing/Intellisense/CodeCompletion/IntellisenseGloballyEnabled/IntellisenseEnabled/@EntryValue">PerTechnology</s:String>
+	<s:Boolean x:Key="/Default/CodeInspection/ExcludedFiles/FileMasksToSkip/=jquery_002Eplaceholder_002A_002Ejs/@EntryIndexedValue">True</s:Boolean>
 	<s:String x:Key="/Default/CodeInspection/ExcludedFiles/GeneratedFilesAndFolders/=8EDC2389_002D5D52_002D431D_002D95FE_002DA4041148F3D1_002Fd_003Ascripts_002Fd_003AT4MvcJs_002Ff_003AT4Proxy_002Ecs/@EntryIndexedValue">8EDC2389-5D52-431D-95FE-A4041148F3D1/d:scripts/d:T4MvcJs/f:T4Proxy.cs</s:String>
 	<s:String x:Key="/Default/CodeInspection/ExcludedFiles/GeneratedFilesAndFolders/=8EDC2389_002D5D52_002D431D_002D95FE_002DA4041148F3D1_002Ff_003AT4MVC_002Ecs/@EntryIndexedValue">8EDC2389-5D52-431D-95FE-A4041148F3D1/f:T4MVC.cs</s:String>
 	<s:String x:Key="/Default/CodeInspection/ExcludedFiles/GeneratedFilesAndFolders/=8EDC2389_002D5D52_002D431D_002D95FE_002DA4041148F3D1_002Ff_003AT4MVC_002EModelUnbinder_002Ecs/@EntryIndexedValue">8EDC2389-5D52-431D-95FE-A4041148F3D1/f:T4MVC.ModelUnbinder.cs</s:String>
