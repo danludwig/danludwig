@@ -8,6 +8,17 @@ var MvcJs = {
 
 			return url.replace(/([?&]+$)/g, "");
 		},
+		Post: function(model) {
+			var url = "/contact/post?model={model}";
+			
+			if (model) {
+				url = url.replace("{model}", model);
+			} else {
+				url = url.replace("model={model}", "").replace("?&","?").replace("&&","&");
+			}
+
+			return url.replace(/([?&]+$)/g, "");
+		},
 		NameConst: "Contact"
 	},
 	Home: {

@@ -1,40 +1,22 @@
-﻿using System.Web.Http;
+﻿using System;
+using System.Net;
+using System.Net.Http;
+using System.Web.Http;
+using RootWeb.Mvc.Models;
 
 namespace RootWeb.Mvc.ApiControllers
 {
     public class ContactController : ApiController
     {
-        //// GET api/contact
-        //public IEnumerable<string> Get()
-        //{
-        //    return new string[] { "value1", "value2" };
-        //}
-
-        //// GET api/contact/5
-        //public string Get(int id)
-        //{
-        //    return "value";
-        //}
-
         // POST api/contact
-        public void Post([FromBody] ContactModel model)
+        public HttpResponseMessage Post([FromBody] ContactModel model)
         {
+            if (!ModelState.IsValid)
+                return new HttpResponseMessage(HttpStatusCode.BadRequest);
+
+            var response = new HttpResponseMessage(HttpStatusCode.OK);
+            response.Headers.Location = new Uri(Url.Link(null, new { id = Guid.NewGuid() }));
+            return response;
         }
-
-        //// PUT api/contact/5
-        //public void Put(int id, [FromBody]string value)
-        //{
-        //}
-
-        //// DELETE api/contact/5
-        //public void Delete(int id)
-        //{
-        //}
-    }
-
-    public class ContactModel
-    {
-        public string Email { get; set; }
-        public string Subject { get; set; }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using System.Web.Mvc;
+using RootWeb.Mvc.Models;
 
 namespace RootWeb.Mvc.Controllers
 {
@@ -9,5 +10,11 @@ namespace RootWeb.Mvc.Controllers
             return View();
         }
 
+        [HttpPost]
+        public virtual JsonResult Post(ContactModel model)
+        {
+            var valid = ModelState.IsValid;
+            return Json("worked");
+        }
     }
 }

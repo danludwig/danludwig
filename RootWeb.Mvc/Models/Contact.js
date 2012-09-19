@@ -73,11 +73,15 @@
 
     self.send = function (viewModel, e) {
         $.post('/api/contact', {
+        //$.post('/contact/post', {
             email: self.email(),
             subject: self.subject(),
         })
         .success(function (response) {
             alert('successful response ' + response);
+        })
+        .error(function (response) {
+            alert('there was an error');
         });
         //router.navigate('//sent', { replace: true });
         e.preventDefault();

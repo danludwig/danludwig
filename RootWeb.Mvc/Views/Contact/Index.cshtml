@@ -29,13 +29,12 @@
                             <div data-bind="visible: !messageCharsOverflowed()">
                                 <span data-bind="text: messageCharsRemaining">1000</span> <span data-bind="text: messageCharactersPluralizer">characters</span> left
                             </div>
-                            <div data-bind="visible: messageCharsOverflowed">
+                            <div data-bind="visible: messageCharsOverflowed" style="display: none;">
                                 You need to remove <span data-bind="text: messageCharsRemaining() * -1"></span>
                                 <span data-bind="text: messageCharactersPluralizer">characters</span>
                             </div>
                         </div>
-                        <div>
-                            <span class="error-message" data-bind="validationMessage: message">Here is my error.</span>
+                        <div class="error-message" data-bind="validationMessage: message" style="display: none;">
                         </div>
                     </div>
                     <footer>

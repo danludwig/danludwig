@@ -40,6 +40,11 @@ namespace RootWeb.Mvc.Controllers {
             return RedirectToRoutePermanent(callInfo.RouteValueDictionary);
         }
 
+        [NonAction]
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public System.Web.Mvc.JsonResult Post() {
+            return new T4MVC_JsonResult(Area, Name, ActionNames.Post);
+        }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public ContactController Actions { get { return MVC.Contact; } }
@@ -56,14 +61,23 @@ namespace RootWeb.Mvc.Controllers {
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public class ActionNamesClass {
             public readonly string Index = "Index";
+            public readonly string Post = "Post";
         }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public class ActionNameConstants {
             public const string Index = "Index";
+            public const string Post = "Post";
         }
 
 
+        static readonly ActionParamsClass_Post s_params_Post = new ActionParamsClass_Post();
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public ActionParamsClass_Post PostParams { get { return s_params_Post; } }
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public class ActionParamsClass_Post {
+            public readonly string model = "model";
+        }
         static readonly ViewNames s_views = new ViewNames();
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public ViewNames Views { get { return s_views; } }
@@ -79,6 +93,12 @@ namespace RootWeb.Mvc.Controllers {
 
         public override System.Web.Mvc.ActionResult Index() {
             var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.Index);
+            return callInfo;
+        }
+
+        public override System.Web.Mvc.JsonResult Post(RootWeb.Mvc.Models.ContactModel model) {
+            var callInfo = new T4MVC_JsonResult(Area, Name, ActionNames.Post);
+            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "model", model);
             return callInfo;
         }
 
