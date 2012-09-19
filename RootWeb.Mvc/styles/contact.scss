@@ -7,3 +7,6 @@ form.contact textarea#message {
 	resize: none;
     @include transition(all, 200ms);
 }
+form.contact textarea#message:focus {
+    min-height: 80px;
+}

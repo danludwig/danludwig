@@ -9,11 +9,19 @@
             }
         });
 
+    self.email = ko.observable()
+        .extend({ required: { message: 'I\'m going to need your email address.' } });
+
     Backbone.history.start();
     router.navigate('//compose', { replace: true });
 
     self.preview = function (viewModel, e) {
-        router.navigate('//preview');
+        if (self.isValid()) {
+            router.navigate('//preview');
+        }
+        else {
+            self.errors.showAllMessages();
+        }
         e.preventDefault();
         return false;
     };
@@ -59,4 +67,13 @@
     });
 }
 
-ko.applyBindings(new ContactViewModel(), $('#main > .content')[0]);
+ko.applyBindingsWithValidation(
+    ko.validatedObservable(new ContactViewModel()),
+    $('#main > .content')[0],
+    {
+        decorateElement: true,
+        errorElementClass: 'error-field',
+        errorMessageClass: 'error-message',
+        parseInputAttributes: true,
+        insertMessages: true
+});

@@ -34,6 +34,12 @@ input[type="month"], input[type="time"], input[type="week"], textarea {
   input[type="date"].placeholder, input[type="datetime"].placeholder, input[type="datetime-local"].placeholder,
   input[type="month"].placeholder, input[type="time"].placeholder, input[type="week"].placeholder, textarea.placeholder {
     color: #999; }
+  input[type="email"].error-field, input[type="number"].error-field, input[type="password"].error-field, input[type="search"].error-field,
+  input[type="tel"].error-field, input[type="text"].error-field, input[type="url"].error-field, input[type="color"].error-field,
+  input[type="date"].error-field, input[type="datetime"].error-field, input[type="datetime-local"].error-field,
+  input[type="month"].error-field, input[type="time"].error-field, input[type="week"].error-field, textarea.error-field {
+    border-color: #c00;
+    background-color: #f8cdcd; }
 
 input[type=submit], input[type=reset], input[type=button], button {
   display: inline-block;
@@ -138,4 +144,11 @@ a.button {
 
 form .field {
   margin: 1em 0; }
+
+.error-message {
+  min-height: 50px;
+  -webkit-transition: all 500ms;
+  -moz-transition: all 500ms;
+  -o-transition: all 500ms;
+  transition: all 500ms; }
 

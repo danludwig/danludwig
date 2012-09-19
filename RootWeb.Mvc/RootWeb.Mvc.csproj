@@ -18,6 +18,10 @@
     <UseIISExpress>true</UseIISExpress>
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
     <RestorePackages>true</RestorePackages>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -241,6 +245,8 @@
     <Content Include="scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="scripts\knockout-2.1.0.debug.js" />
     <Content Include="scripts\knockout-2.1.0.js" />
+    <Content Include="scripts\knockout.validation.debug.js" />
+    <Content Include="scripts\knockout.validation.js" />
     <Content Include="scripts\modernizr-2.5.3.js" />
     <Content Include="scripts\other\fixed-scroll.js" />
     <Content Include="scripts\other\jquery.autosize.js" />

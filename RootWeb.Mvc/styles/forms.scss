@@ -23,6 +23,10 @@ input[type="month"], input[type="time"],     input[type="week"], textarea {
     &.placeholder {
         color: #999;
     }
+    &.error-field {
+        border-color: #c00;
+        background-color: #f8cdcd;
+    }
 }
 
 input[type=submit], input[type=reset], input[type=button], button {
@@ -98,4 +102,9 @@ a.button {
 
 form .field {
     margin: 1em 0;
+}
+
+.error-message {
+    min-height: 50px;
+    @include transition(all, 500ms);
 }

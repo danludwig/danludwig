@@ -8,3 +8,6 @@ form.contact textarea#message {
   -o-transition: all 200ms;
   transition: all 200ms; }
 
+form.contact textarea#message:focus {
+  min-height: 80px; }
+
