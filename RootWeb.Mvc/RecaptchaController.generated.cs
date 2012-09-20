@@ -21,12 +21,12 @@ using System.Web.Mvc.Html;
 using System.Web.Routing;
 using T4MVC;
 namespace RootWeb.Mvc.Controllers {
-    public partial class ContactController {
+    public partial class RecaptchaController {
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public ContactController() { }
+        public RecaptchaController() { }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        protected ContactController(Dummy d) { }
+        protected RecaptchaController(Dummy d) { }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         protected RedirectToRouteResult RedirectToAction(ActionResult result) {
@@ -40,15 +40,20 @@ namespace RootWeb.Mvc.Controllers {
             return RedirectToRoutePermanent(callInfo.RouteValueDictionary);
         }
 
+        [NonAction]
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public System.Web.Mvc.JsonResult Index() {
+            return new T4MVC_JsonResult(Area, Name, ActionNames.Index);
+        }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public ContactController Actions { get { return MVC.Contact; } }
+        public RecaptchaController Actions { get { return MVC.Recaptcha; } }
         [GeneratedCode("T4MVC", "2.0")]
         public readonly string Area = "";
         [GeneratedCode("T4MVC", "2.0")]
-        public readonly string Name = "Contact";
+        public readonly string Name = "Recaptcha";
         [GeneratedCode("T4MVC", "2.0")]
-        public const string NameConst = "Contact";
+        public const string NameConst = "Recaptcha";
 
         static readonly ActionNamesClass s_actions = new ActionNamesClass();
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
@@ -64,21 +69,28 @@ namespace RootWeb.Mvc.Controllers {
         }
 
 
+        static readonly ActionParamsClass_Index s_params_Index = new ActionParamsClass_Index();
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public ActionParamsClass_Index IndexParams { get { return s_params_Index; } }
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public class ActionParamsClass_Index {
+            public readonly string model = "model";
+        }
         static readonly ViewNames s_views = new ViewNames();
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public ViewNames Views { get { return s_views; } }
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public class ViewNames {
-            public readonly string Index = "~/Views/Contact/Index.cshtml";
         }
     }
 
     [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-    public class T4MVC_ContactController: RootWeb.Mvc.Controllers.ContactController {
-        public T4MVC_ContactController() : base(Dummy.Instance) { }
+    public class T4MVC_RecaptchaController: RootWeb.Mvc.Controllers.RecaptchaController {
+        public T4MVC_RecaptchaController() : base(Dummy.Instance) { }
 
-        public override System.Web.Mvc.ActionResult Index() {
-            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.Index);
+        public override System.Web.Mvc.JsonResult Index(Recaptcha.MvcModel.RecaptchaValidationModel model) {
+            var callInfo = new T4MVC_JsonResult(Area, Name, ActionNames.Index);
+            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "model", model);
             return callInfo;
         }
 

@@ -26,6 +26,7 @@ public static class MVC {
     public static RootWeb.Mvc.Controllers.ContactController Contact = new RootWeb.Mvc.Controllers.T4MVC_ContactController();
     public static RootWeb.Mvc.Controllers.HomeController Home = new RootWeb.Mvc.Controllers.T4MVC_HomeController();
     public static RootWeb.Mvc.Controllers.LinkedNController LinkedN = new RootWeb.Mvc.Controllers.T4MVC_LinkedNController();
+    public static RootWeb.Mvc.Controllers.RecaptchaController Recaptcha = new RootWeb.Mvc.Controllers.T4MVC_RecaptchaController();
     public static T4MVC.SharedController Shared = new T4MVC.SharedController();
 }
 

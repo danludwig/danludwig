@@ -12,10 +12,12 @@ namespace RootWeb.Mvc.Models
     {
         public ContactModelValidator()
         {
-            RuleFor(m => m.Email).NotEmpty().EmailAddress().Must((o, p) =>
-            {
-                return p.Length > 100;
-            });
+            RuleFor(m => m.Email).NotEmpty().EmailAddress()
+                //.Must((o, p) =>
+                //{
+                //    return p.Length > 100;
+                //})
+            ;
         }
     }
 }

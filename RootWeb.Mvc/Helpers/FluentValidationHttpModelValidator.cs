@@ -17,15 +17,18 @@ namespace RootWeb.Mvc.Helpers
 
         public override IEnumerable<ModelValidationResult> Validate(ModelMetadata metadata, object container)
         {
-            var validator = _validatorFactory.GetValidator(container.GetType());
-            var results = validator.Validate(container);
-            foreach (var result in results.Errors)
+            if (container != null)
             {
-                yield return new ModelValidationResult
-                    {
-                        MemberName = result.PropertyName,
-                        Message = result.ErrorMessage,
-                    };
+                var validator = _validatorFactory.GetValidator(container.GetType());
+                var results = validator.Validate(container);
+                foreach (var result in results.Errors)
+                {
+                    yield return new ModelValidationResult
+                                     {
+                                         MemberName = result.PropertyName,
+                                         Message = result.ErrorMessage,
+                                     };
+                }
             }
         }
     }
