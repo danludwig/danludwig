@@ -9,7 +9,7 @@
             type: 'POST',
             async: false,
             success: function (response) {
-                alert('successful response ' + response);
+                //alert('successful response ' + response);
                 isValid = response === true;
             }
         };
@@ -144,8 +144,8 @@ function ContactViewModel() {
             .success(function(response) {
                 alert('successful response ' + response);
             })
-            .error(function(response) {
-                alert('there was an error');
+            .error(function(response, error, message) {
+                alert('There was an error: ' + message);
             });
         }
         //router.navigate('//sent', { replace: true });

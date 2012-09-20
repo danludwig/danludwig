@@ -160,6 +160,8 @@
   <ItemGroup>
     <Compile Include="ApiControllers\ContactController.cs" />
     <Compile Include="Controllers\RecaptchaController.cs" />
+    <Compile Include="Helpers\FluentValidationHttpModelValidationFactory.cs" />
+    <Compile Include="Helpers\FluentValidationHttpPropertyValidator.cs" />
     <Compile Include="Models\RecaptchaModelValidator.cs" />
     <Compile Include="Models\ContactModel.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />

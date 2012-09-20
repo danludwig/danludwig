@@ -1,11 +1,13 @@
 ﻿@{
     ViewBag.Title = "Contact me";
 }
+
 <script type="text/javascript">
     var RecaptchaOptions = {
         theme: 'clean'
     };
 </script>
+
 <div id="slider">
     <form class="contact frames" method="post">
         <div class="current frame" id="compose" data-bind="with: composeViewModel">
@@ -105,8 +107,7 @@
                 </p>
                 <footer>
                     <p>
-                        If you want to be annoying, <a
-                            href="@Url.Action(MVC.Contact.Index())/">send me another email right now</a>.
+                        If you want to be annoying, <a href="@Url.Action(MVC.Contact.Index())/">send me another email right now</a>.
                     </p>
                 </footer>
             </section>
