@@ -10,13 +10,13 @@ namespace RootWeb.Mvc.Models
 
         public RecaptchaModelValidator()
         {
-            RuleFor(m => m.recaptcha_response_field).NotEmpty().WithMessage("Recaptcha cannot be empty")
+            RuleFor(m => m.recaptcha_response_field).NotEmpty().WithMessage("Recaptcha cannot be empty.")
                 .Must((model, value) =>
-                          {
-                              var response = RecaptchaValidationModel.IsValid(model, HttpContext.Current.Request.UserHostAddress);
-                              _recaptchaErrorMessage = response.ErrorMessage;
-                              return response.IsValid;
-                          })
+                {
+                    var response = RecaptchaValidationModel.IsValid(model, HttpContext.Current.Request.UserHostAddress);
+                    _recaptchaErrorMessage = response.ErrorMessage;
+                    return response.IsValid;
+                })
                 .WithMessage("{0}", model => _recaptchaErrorMessage)
             ;
         }

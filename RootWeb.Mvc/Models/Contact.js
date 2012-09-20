@@ -137,6 +137,9 @@ function ContactViewModel() {
             $.post('/api/contact', {
                 email: self.composeViewModel.email(),
                 subject: self.composeViewModel.subject(),
+                message: self.composeViewModel.message(),
+                challenge: $('#recaptcha_challenge_field').val(),
+                response: self.previewViewModel.recaptchaResponse()
             })
             .success(function(response) {
                 alert('successful response ' + response);

@@ -10,7 +10,7 @@ namespace RootWeb.Mvc
         public static void Register(HttpConfiguration config)
         {
             // set up fluent validation for http model validation
-            config.Services.Add(typeof(ModelValidatorProvider), new FluentValidationHttpModelValidatorProvider());
+            config.Services.Insert(typeof(ModelValidatorProvider), 0, new FluentValidationHttpModelValidatorProvider());
 
             // convert pascalcased properties to camel case
             config.Formatters.JsonFormatter.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
