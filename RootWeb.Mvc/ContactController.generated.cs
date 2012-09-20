@@ -82,6 +82,12 @@ namespace RootWeb.Mvc.Controllers {
             return callInfo;
         }
 
+        public override System.Web.Mvc.JsonResult Index(RootWeb.Mvc.Models.ContactModel model) {
+            var callInfo = new T4MVC_JsonResult(Area, Name, ActionNames.Index);
+            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "model", model);
+            return callInfo;
+        }
+
     }
 }
 

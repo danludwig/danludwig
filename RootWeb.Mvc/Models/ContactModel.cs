@@ -1,6 +1,6 @@
 using System.Web;
 using FluentValidation;
-using Recaptcha.MvcModel;
+using RootWeb.Mvc.Helpers;
 
 namespace RootWeb.Mvc.Models
 {
@@ -15,8 +15,6 @@ namespace RootWeb.Mvc.Models
 
     public class ContactModelValidator : AbstractValidator<ContactModel>
     {
-        private string _recaptchaErrorMessage;
-
         public ContactModelValidator()
         {
             RuleFor(m => m.Email).NotEmpty().EmailAddress();
@@ -26,16 +24,17 @@ namespace RootWeb.Mvc.Models
                 .WithMessage("Recaptcha cannot be empty.")
                 .Must((model, value) =>
                 {
-                    var recaptchaModel = new RecaptchaValidationModel
-                                             {
-                        recaptcha_challenge_field = model.Challenge,
-                        recaptcha_response_field = model.Response,
-                    };
-                    var response = RecaptchaValidationModel.IsValid(recaptchaModel, HttpContext.Current.Request.UserHostAddress);
-                    _recaptchaErrorMessage = response.ErrorMessage;
-                    return response.IsValid;
+                    var http = new HttpContextWrapper(HttpContext.Current);
+                    var recaptchaValidated = http.Session.RecaptchaValidated();
+                    if (recaptchaValidated != null)
+                    {
+                        return recaptchaValidated.Challenge == model.Challenge
+                               && recaptchaValidated.Response == model.Response
+                               && recaptchaValidated.AnonymousId == http.Request.AnonymousID;
+                    }
+                    return false;
                 })
-                .WithMessage("{0}", model => _recaptchaErrorMessage)
+                .WithMessage("Recaptcha verification has failed.")
             ;
         }
     }

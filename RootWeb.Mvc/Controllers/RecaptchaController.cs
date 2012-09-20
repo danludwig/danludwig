@@ -1,6 +1,7 @@
 ﻿using System.Linq;
 using System.Web.Mvc;
 using Recaptcha.MvcModel;
+using RootWeb.Mvc.Helpers;
 
 namespace RootWeb.Mvc.Controllers
 {
@@ -9,10 +10,11 @@ namespace RootWeb.Mvc.Controllers
         [HttpPost]
         public virtual JsonResult Index(RecaptchaValidationModel model)
         {
-            object response = true;
             if (!ModelState.IsValid)
-                response = ModelState.First(s => s.Value.Errors.Any()).Value.Errors.First().ErrorMessage;
-            return Json(response);
+                return Json(ModelState.First(s => s.Value.Errors.Any()).Value.Errors.First().ErrorMessage);
+
+            Session.RecaptchaValidated(model, Request.AnonymousID);
+            return Json(true);
         }
     }
 }

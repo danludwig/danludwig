@@ -134,7 +134,7 @@ function ContactViewModel() {
         self.previewViewModel.recaptchaResponse($('#recaptcha_response_field').val());
         var previewValidationModel = ko.validatedObservable(self.previewViewModel);
         if (previewValidationModel.isValid()) {
-            $.post('/api/contact', {
+            $.post('/contact', {
                 email: self.composeViewModel.email(),
                 subject: self.composeViewModel.subject(),
                 message: self.composeViewModel.message(),
