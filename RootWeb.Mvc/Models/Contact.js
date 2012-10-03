@@ -153,6 +153,29 @@ function ContactViewModel() {
         return false;
     };
 
+    // disable tabbing to hidden cards
+    self.disableCard = function($container) {
+        $container.find('input, textarea, a').attr('tabindex', -1)
+            .attr('data-tabindex-set', true).data('tabindex-set', true);
+    };
+
+    // enable tabbing within visible cards
+    self.enableCard = function ($container) {
+        $container.find('input, textarea, a').each(function () {
+            var $this = $(this);
+            if ($this.attr('data-tabindex-set')) {
+                $this.removeAttr('tabindex').removeAttr('data-tabindex-set').removeData('tabindex-set');
+            }
+        });
+    };
+
+    // disable tabbing to other cards
+    ko.computed(function () {
+        $('#preview, #sent').each(function () {
+            self.disableCard($(this));
+        });
+    });
+
     // slide to compose card
     router.on('route:compose', function () {
         if ($('#preview').hasClass('current')) {
@@ -161,6 +184,9 @@ function ContactViewModel() {
         else if ($('#sent').hasClass('current')) {
             history.back();
         }
+        self.disableCard($('#preview'));
+        self.disableCard($('#sent'));
+        self.enableCard($('#compose'));
     });
 
     // slide to preview card
@@ -171,6 +197,9 @@ function ContactViewModel() {
         else if ($('#sent').hasClass('current')) {
             router.navigate('//compose', { replace: true });
         }
+        self.disableCard($('#compose'));
+        self.disableCard($('#sent'));
+        self.enableCard($('#preview'));
     });
 
     // slide to sent card
@@ -178,6 +207,9 @@ function ContactViewModel() {
         if ($('#preview').hasClass('current')) {
             slider.next();
         }
+        self.disableCard($('#preview'));
+        self.disableCard($('#compose'));
+        self.enableCard($('#sent'));
     });
 }
 

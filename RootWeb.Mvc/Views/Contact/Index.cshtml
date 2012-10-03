@@ -49,7 +49,7 @@
                                         Request.UrlReferrer.AbsolutePath != Request.Url.AbsolutePath
                                             ? Request.UrlReferrer.ToString() : "/";
                     }
-                    <a class="blue progress button" data-bind="click: preview">Preview &amp; Send</a>
+                    <a class="blue progress button" data-bind="click: preview" href="#/preview">Preview &amp; Send</a>
                     <a class="regress button" href="@cancelUrl">Cancel</a>
                 </footer>
             </section>
@@ -116,7 +116,6 @@
 </div>
 @section scripts
 {
-
 
     <script type="text/javascript" src="~/Models/Contact.js"></script>
 
