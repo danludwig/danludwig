@@ -2,12 +2,6 @@
     ViewBag.Title = "Contact me";
 }
 
-<script type="text/javascript">
-    //var RecaptchaOptions = {
-    //    theme: 'clean'
-    //};
-</script>
-
 <div id="slider">
     <form class="contact frames" method="post" data-bind="submit: submit">
         <div class="current frame" id="compose" data-bind="with: composeViewModel">
@@ -30,11 +24,10 @@
                     <div class="error-message" data-bind="validationMessage: subject" style="display: none;">
                     </div>
                 </div>
-                <div class="field">
+                <div class="message field">
                     <textarea id="message" rows="1" placeholder="Message (what do you want)" data-bind="value: message, valueUpdate: 'afterkeydown'"
                         data-autosize="true"
-                        data-autosize-mirror="autosize-message"
-                        data-autosize-append-line="true"></textarea>
+                        data-autosize-mirror="autosize-message"></textarea>
                     <div id="message_chars" data-bind="css: { invalid: messageCharsOverflowed }">
                         <div data-bind="visible: !messageCharsOverflowed()">
                             <span data-bind="text: messageCharsRemaining">1000</span> <span data-bind="text: messageCharactersPluralizer">characters</span> left
@@ -81,13 +74,13 @@
                     <label>Message</label>
                     <span class="input"><span data-bind="text: message"></span></span>
                 </p>
-                <div class="field">
+                <div class="recaptcha field">
                     <label>Proof of humanity</label>
                     <div class="input">
 
                         <div id="recaptcha_container" data-bind="element: 'recaptchaBox'"></div>
 
-                        <div style="min-height: 50px;">
+                        <div class="validation">
                             <span class="error-message" data-bind="validationMessage: recaptchaResponse" style="display: none;"></span>
                             <span class="spinner-message" data-bind="visible: isValidating">
                                 <img src="~/images/spinner.gif" alt="wait icon" />
@@ -96,8 +89,6 @@
 
                     </div>
                 </div>
-                @*<div data-bind="text: recaptchaChallenge"></div>
-                <div data-bind="text: recaptchaResponse"></div>*@
                 <footer>
                     <a class="blue progress button" data-bind="click: send">Send now</a>
                     <input type="submit" value="Send now" />
@@ -137,8 +128,9 @@
 
     <script type="text/javascript">
 
+        var contactViewModel = new ContactViewModel();
         ko.applyBindingsWithValidation(
-            new ContactViewModel(),
+            contactViewModel,
             $('#main > .content')[0],
             {
                 decorateElement: true,
@@ -152,8 +144,12 @@
             'recaptcha_container',
             {
                 theme: 'clean',
-                callback: function () { }
+                callback: function () {
+                    // disable tabbing after recaptcha is created
+                    contactViewModel.disableCards();
+                }
             });
+
     </script>
 
 }

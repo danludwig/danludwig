@@ -205,11 +205,12 @@ function ContactViewModel() {
     };
 
     // disable tabbing to other cards
-    ko.computed(function () {
-        $('#preview, #sent').each(function () {
+    self.disableCards = function() {
+        $('#preview, #sent').each(function() {
             self.disableCard($(this));
         });
-    });
+    };
+    ko.computed(self.disableCards);
 
     // slide to compose card
     router.on('route:compose', function () {
