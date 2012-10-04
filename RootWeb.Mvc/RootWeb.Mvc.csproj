@@ -273,6 +273,7 @@
     <Content Include="images\logos\nuget.png" />
     <Content Include="images\logos\stackoverflow.png" />
     <Content Include="images\logos\xbox.png" />
+    <Content Include="images\spinner.gif" />
     <Content Include="Models\Contact.js" />
     <Content Include="Models\LayoutNav.js" />
     <Content Include="scripts\backbone.js" />

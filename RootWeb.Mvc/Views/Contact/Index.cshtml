@@ -9,7 +9,7 @@
 </script>
 
 <div id="slider">
-    <form class="contact frames" method="post">
+    <form class="contact frames" method="post" data-bind="submit: previewViewModel.send">
         <div class="current frame" id="compose" data-bind="with: composeViewModel">
             <section>
                 <header>
@@ -82,7 +82,11 @@
 
                         <script type="text/javascript" src="http://www.google.com/recaptcha/api/challenge?k=6LfutdYSAAAAAAQnU35mquII_k1d43or_K23844g"></script>
 
-                        <div class="error-message" data-bind="validationMessage: recaptchaResponse" style="display: none;">
+                        <div>
+                            <span class="error-message" data-bind="validationMessage: recaptchaResponse" style="display: none;"></span>
+                            <span class="spinner-message" data-bind="visible: isValidating">
+                                <img src="~/images/spinner.gif" alt="wait icon" />
+                                Validating your humanity...</span>
                         </div>
 
                     </div>
@@ -91,6 +95,7 @@
                 <div data-bind="text: recaptchaResponse"></div>*@
                 <footer>
                     <a class="blue progress button" data-bind="click: send">Send now</a>
+                    <input type="submit" value="Send now" />
                     <a class="regress button" data-bind="click: compose">Go back and edit</a>
                 </footer>
             </section>

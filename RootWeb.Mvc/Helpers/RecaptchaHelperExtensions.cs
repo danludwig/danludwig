@@ -34,6 +34,7 @@ namespace RootWeb.Mvc.Helpers
             if (session == null) throw new ArgumentNullException("session");
 
             var raw = session[Key] as string;
+            if (raw == null) return null;
             var model = JsonConvert.DeserializeObject<RecaptchaModelValidated>(raw);
             return model;
         }

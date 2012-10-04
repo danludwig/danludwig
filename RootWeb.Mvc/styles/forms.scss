@@ -112,3 +112,12 @@ form .field {
     @include font-height(14px, 16px);
     font-weight: bold;
 }
+
+.spinner-message {
+    display: inline-block;
+    padding: 8px 0;
+    font-family: Verdana;
+    @include font-height(14px, 16px);
+    font-style: italic;
+    vertical-align: middle;
+}

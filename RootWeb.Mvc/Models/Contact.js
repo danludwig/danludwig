@@ -1,29 +1,21 @@
 ﻿ko.validation.rules['recaptcha'] = {
-    //async: true,
-    validator: function (val, options) {
-        // do not submit if recaptcha has no value
-        if (!val) return false;
-
-        var isValid = false;
-        var defaults = {
+    async: true,
+    validator: function (val, vm, callback) {
+        $.ajax({
+            url: '/recaptcha',
             type: 'POST',
-            async: false,
-            success: function (response) {
-                //alert('successful response ' + response);
-                isValid = response === true;
+            data: {
+                recaptcha_challenge_field: $('#recaptcha_challenge_field').val(),
+                recaptcha_response_field: $('#recaptcha_response_field').val()
             }
-        };
-        var settings = $.extend(defaults, options);
-        settings.data = settings.data || { };
-        settings.data.recaptcha_challenge_field = $('#recaptcha_challenge_field').val();
-        settings.data.recaptcha_response_field = $('#recaptcha_response_field').val();
-
-        $.ajax(settings);
-        return isValid;
+        })
+        .success(function (response) {
+            if (response === true) callback(true);
+            else callback(false);
+        });
     },
     message: 'Nope, that\'s wrong. Try another challenge.'
 };
-
 ko.validation.registerExtenders();
 
 function ContactViewModel() {
@@ -92,21 +84,21 @@ function ContactViewModel() {
 
     // click button to preview message
     self.composeViewModel.preview = function (viewModel, e) {
-        var composeValidationModel = ko.validatedObservable(self.composeViewModel);
-        if (composeValidationModel.isValid()) {
+        if (self.composeViewModel.isValid()) {
             router.navigate('//preview');
         }
         else {
-            composeValidationModel.errors.showAllMessages();
+            self.composeViewModel.errors.showAllMessages();
         }
         e.preventDefault();
         return false;
     };
 
+    ko.validation.group(self.composeViewModel);
+
     // preview viewmodel card
     // defaults
     self.previewViewModel = {
-        recaptchaValidationUrl: '/recaptcha'
     };
 
     // borrow inputs from compose slide
@@ -117,8 +109,15 @@ function ContactViewModel() {
     // recaptcha input
     self.previewViewModel.recaptchaResponse = ko.observable().extend({
         required: { message: 'Prove you are a human.' },
-        recaptcha: {
-            url: self.previewViewModel.recaptchaValidationUrl,
+        recaptcha: true
+    });
+
+    // recaptcha validation
+    self.previewViewModel.isValidating = ko.observable();
+    self.previewViewModel.recaptchaResponse.isValidating.subscribe(function (isValidating) {
+        self.previewViewModel.isValidating(isValidating);
+        if (!isValidating) {
+            self.previewViewModel.send(self);
         }
     });
 
@@ -132,8 +131,10 @@ function ContactViewModel() {
     // send the message
     self.previewViewModel.send = function (viewModel, e) {
         self.previewViewModel.recaptchaResponse($('#recaptcha_response_field').val());
-        var previewValidationModel = ko.validatedObservable(self.previewViewModel);
-        if (previewValidationModel.isValid()) {
+        if (!self.previewViewModel.isValid()) {
+            self.previewViewModel.errors.showAllMessages();
+        }
+        else if (!self.previewViewModel.isValidating()) {
             $.post('/contact', {
                 email: self.composeViewModel.email(),
                 subject: self.composeViewModel.subject(),
@@ -149,9 +150,11 @@ function ContactViewModel() {
             });
         }
         //router.navigate('//sent', { replace: true });
-        e.preventDefault();
+        if (e) e.preventDefault();
         return false;
     };
+
+    ko.validation.group(self.previewViewModel);
 
     // disable tabbing to hidden cards
     self.disableCard = function($container) {
@@ -213,10 +216,11 @@ function ContactViewModel() {
     });
 }
 
-ko.applyBindingsWithValidation(
-    ko.validatedObservable(new ContactViewModel()),
+ko.applyBindings(
+    new ContactViewModel(),
     $('#main > .content')[0],
     {
+        registerExtenders: true,
         decorateElement: true,
         errorElementClass: 'error-field',
         errorMessageClass: 'error-message',
