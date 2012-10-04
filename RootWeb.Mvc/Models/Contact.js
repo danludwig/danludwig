@@ -1,4 +1,12 @@
-﻿ko.validation.rules['recaptcha'] = {
+﻿/// <reference path="../scripts/jquery-1.8.0.js" />
+/// <reference path="../scripts/knockout-2.1.0.js" />
+/// <reference path="../scripts/knockout.validation.js" />
+/// <reference path="../scripts/backbone.js" />
+/// <reference path="../scripts/other/slider.js" />
+/// <reference path="../scripts/recaptcha_ajax.js" />
+
+
+ko.validation.rules['recaptcha'] = {
     async: true,
     validator: function (val, vm, callback) {
         $.ajax({
@@ -112,12 +120,24 @@ function ContactViewModel() {
         recaptcha: true
     });
 
+    // recaptcha element
+    self.previewViewModel.recaptchaBox = undefined;
+
     // recaptcha validation
     self.previewViewModel.isValidating = ko.observable();
     self.previewViewModel.recaptchaResponse.isValidating.subscribe(function (isValidating) {
         self.previewViewModel.isValidating(isValidating);
         if (!isValidating) {
-            self.previewViewModel.send(self);
+            if (self.previewViewModel.isValid()) {
+                self.previewViewModel.send(self);
+            }
+            else {
+                var $recaptchaBox = $(self.previewViewModel.recaptchaBox);
+                $recaptchaBox.fadeOut('fast', function() {
+                    Recaptcha.reload();
+                    $recaptchaBox.fadeIn();
+                });
+            }
         }
     });
 

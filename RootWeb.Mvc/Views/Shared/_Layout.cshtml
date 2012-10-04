@@ -9,6 +9,9 @@
     @Styles.Render("~/styles/legacy")
     <![endif]-->
     @Scripts.Render("~/bundles/modernizr")
+
+    @RenderSection("head", required: false)
+
 </head>
 <body>
     @Html.Partial(MVC.Shared.Views._LayoutHeader)

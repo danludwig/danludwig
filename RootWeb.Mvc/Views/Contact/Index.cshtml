@@ -3,9 +3,9 @@
 }
 
 <script type="text/javascript">
-    var RecaptchaOptions = {
-        theme: 'clean'
-    };
+    //var RecaptchaOptions = {
+    //    theme: 'clean'
+    //};
 </script>
 
 <div id="slider">
@@ -80,7 +80,7 @@
                     <label>Proof of humanity</label>
                     <div class="input">
 
-                        <script type="text/javascript" src="http://www.google.com/recaptcha/api/challenge?k=6LfutdYSAAAAAAQnU35mquII_k1d43or_K23844g"></script>
+                        <div id="recaptcha_container" data-bind="element: 'recaptchaBox'"></div>
 
                         <div>
                             <span class="error-message" data-bind="validationMessage: recaptchaResponse" style="display: none;"></span>
@@ -119,9 +119,24 @@
         </div>
     </form>
 </div>
+@section head
+{
+
+    <script type="text/javascript" src="http://www.google.com/recaptcha/api/js/recaptcha_ajax.js"></script>
+
+}
 @section scripts
 {
 
     <script type="text/javascript" src="~/Models/Contact.js"></script>
+
+    <script type="text/javascript">
+        Recaptcha.create('@System.Configuration.ConfigurationManager.AppSettings["RecaptchaPublicKey"]',
+            'recaptcha_container',
+            {
+                theme: 'clean',
+                callback: function () { }
+            });
+    </script>
 
 }

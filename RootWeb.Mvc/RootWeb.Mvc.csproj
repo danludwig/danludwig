@@ -300,8 +300,10 @@
     <Content Include="scripts\other\jquery.autosize.js" />
     <Content Include="scripts\other\jquery.placeholder.js" />
     <Content Include="scripts\other\jquery.placeholder.min.js" />
+    <Content Include="scripts\other\knockout.binding-handlers.js" />
     <Content Include="scripts\other\slider.js" />
     <Content Include="scripts\other\unobtrusive-data.js" />
+    <Content Include="scripts\recaptcha_ajax.js" />
     <Content Include="scripts\T4MvcJs\T4MvcJs.js">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

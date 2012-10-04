@@ -10,7 +10,7 @@ namespace RootWeb.Mvc.Controllers
         [HttpPost]
         public virtual JsonResult Index(RecaptchaValidationModel model)
         {
-            //System.Threading.Thread.Sleep(5000);
+            //System.Threading.Thread.Sleep(2000);
             if (!ModelState.IsValid)
                 return Json(ModelState.First(s => s.Value.Errors.Any()).Value.Errors.First().ErrorMessage);
 

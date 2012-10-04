@@ -31,6 +31,7 @@ namespace RootWeb.Mvc
                 "~/scripts/other/slider.js",
                 "~/scripts/knockout-{version}.js",
                 "~/scripts/knockout.validation*",
+                "~/scripts/other/knockout.binding-handlers.js",
                 "~/scripts/underscore*",
                 "~/scripts/backbone*",
                 "~/models/LayoutNav.js"
