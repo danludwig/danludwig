@@ -9,7 +9,7 @@
 </script>
 
 <div id="slider">
-    <form class="contact frames" method="post" data-bind="submit: previewViewModel.send">
+    <form class="contact frames" method="post" data-bind="submit: submit">
         <div class="current frame" id="compose" data-bind="with: composeViewModel">
             <section>
                 <header>
@@ -22,11 +22,15 @@
                 </p>
                 <div class="field">
                     <input id="from" type="email" placeholder="From (your email)" data-bind="value: email, validationElement: email" required />
+                    <div class="error-message" data-bind="validationMessage: email" style="display: none;">
+                    </div>
                 </div>
                 <div class="field">
                     <input id="subject" type="text" placeholder="Subject (optional)" data-bind="value: subject" />
+                    <div class="error-message" data-bind="validationMessage: subject" style="display: none;">
+                    </div>
                 </div>
-                <div class="field" data-bind="validationOptions: { insertMessages: false, decorateElement: true, errorElementClass: 'error-field' }">
+                <div class="field">
                     <textarea id="message" rows="1" placeholder="Message (what do you want)" data-bind="value: message, valueUpdate: 'afterkeydown'"
                         data-autosize="true"
                         data-autosize-mirror="autosize-message"
@@ -50,6 +54,7 @@
                                             ? Request.UrlReferrer.ToString() : "/";
                     }
                     <a class="blue progress button" data-bind="click: preview" href="#/preview">Preview &amp; Send</a>
+                    <input type="submit" value="Preview & Send" />
                     <a class="regress button" href="@cancelUrl">Cancel</a>
                 </footer>
             </section>
@@ -82,7 +87,7 @@
 
                         <div id="recaptcha_container" data-bind="element: 'recaptchaBox'"></div>
 
-                        <div>
+                        <div style="min-height: 50px;">
                             <span class="error-message" data-bind="validationMessage: recaptchaResponse" style="display: none;"></span>
                             <span class="spinner-message" data-bind="visible: isValidating">
                                 <img src="~/images/spinner.gif" alt="wait icon" />
@@ -131,6 +136,18 @@
     <script type="text/javascript" src="~/Models/Contact.js"></script>
 
     <script type="text/javascript">
+
+        ko.applyBindingsWithValidation(
+            new ContactViewModel(),
+            $('#main > .content')[0],
+            {
+                decorateElement: true,
+                insertMessages: false,
+                errorElementClass: 'error-field',
+                errorMessageClass: 'error-message',
+                parseInputAttributes: true
+            });
+
         Recaptcha.create('@System.Configuration.ConfigurationManager.AppSettings["RecaptchaPublicKey"]',
             'recaptcha_container',
             {

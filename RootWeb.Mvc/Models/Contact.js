@@ -98,11 +98,9 @@ function ContactViewModel() {
         else {
             self.composeViewModel.errors.showAllMessages();
         }
-        e.preventDefault();
+        if (e) e.preventDefault();
         return false;
     };
-
-    ko.validation.group(self.composeViewModel);
 
     // preview viewmodel card
     // defaults
@@ -150,7 +148,6 @@ function ContactViewModel() {
 
     // send the message
     self.previewViewModel.send = function (viewModel, e) {
-        self.previewViewModel.recaptchaResponse($('#recaptcha_response_field').val());
         if (!self.previewViewModel.isValid()) {
             self.previewViewModel.errors.showAllMessages();
         }
@@ -174,7 +171,22 @@ function ContactViewModel() {
         return false;
     };
 
+    // set up validation
+    ko.validation.group(self.composeViewModel);
     ko.validation.group(self.previewViewModel);
+
+
+    // submit the form
+    self.submit = function () {
+        if ($('#compose').hasClass('current')) {
+            self.composeViewModel.preview(self);
+        }
+        else if ($('#preview').hasClass('current')) {
+            var response = $('#recaptcha_response_field').val();
+            self.previewViewModel.recaptchaResponse('');
+            self.previewViewModel.recaptchaResponse(response);
+        }
+    };
 
     // disable tabbing to hidden cards
     self.disableCard = function($container) {
@@ -235,15 +247,3 @@ function ContactViewModel() {
         self.enableCard($('#sent'));
     });
 }
-
-ko.applyBindings(
-    new ContactViewModel(),
-    $('#main > .content')[0],
-    {
-        registerExtenders: true,
-        decorateElement: true,
-        errorElementClass: 'error-field',
-        errorMessageClass: 'error-message',
-        insertMessages: true,
-        parseInputAttributes: true
-});
