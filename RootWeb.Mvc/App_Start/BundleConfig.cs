@@ -32,8 +32,8 @@ namespace RootWeb.Mvc
                 "~/scripts/knockout-{version}.js",
                 "~/scripts/knockout.validation*",
                 "~/scripts/other/knockout.binding-handlers.js",
-                "~/scripts/underscore*",
-                "~/scripts/backbone*",
+                "~/scripts/sammy/sammy.js",
+                "~/scripts/sammy/sammy.title*",
                 "~/models/LayoutNav.js"
             ));
 

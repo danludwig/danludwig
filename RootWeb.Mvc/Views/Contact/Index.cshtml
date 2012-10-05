@@ -3,7 +3,7 @@
 }
 
 <div id="slider">
-    <form class="contact frames" method="post" data-bind="submit: submit">
+    <form action="#/submit/" method="post" class="contact frames" data-bind="submit: submit">
         <div class="current frame" id="compose" data-bind="with: composeViewModel">
             <section>
                 <header>
@@ -46,8 +46,8 @@
                                         Request.UrlReferrer.AbsolutePath != Request.Url.AbsolutePath
                                             ? Request.UrlReferrer.ToString() : "/";
                     }
-                    <a class="blue progress button" data-bind="click: preview" href="#/preview">Preview &amp; Send</a>
-                    <input type="submit" value="Preview & Send" />
+                    <a class="blue progress button" href="#/preview/">Preview &amp; Send</a>
+                    <input type="submit" value="Preview & Send" data-bind="enable: !$parent.isSent()" />
                     <a class="regress button" href="@cancelUrl">Cancel</a>
                 </footer>
             </section>
@@ -91,8 +91,8 @@
                 </div>
                 <footer>
                     <a class="blue progress button" data-bind="click: send">Send now</a>
-                    <input type="submit" value="Send now" />
-                    <a class="regress button" data-bind="click: compose">Go back and edit</a>
+                    <input type="submit" value="Send now" data-bind="enable: !$parent.isSent()" />
+                    <a class="regress button" href="#/compose/" data-bind="click: compose">Go back and edit</a>
                 </footer>
             </section>
         </div>

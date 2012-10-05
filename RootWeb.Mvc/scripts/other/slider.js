@@ -35,10 +35,11 @@
                 .css({ marginLeft: 0 })
 
                 // remove the css class since this is no longer the current frame
-                .toggleClass(settings.currentFrameClass);
+                .removeClass(settings.currentFrameClass);
 
             // the left frame is now current
-            $nextFrame.toggleClass(settings.currentFrameClass);
+            if (!$nextFrame.hasClass(settings.currentFrameClass))
+                $nextFrame.addClass(settings.currentFrameClass);
         });
     };
 
@@ -63,11 +64,12 @@
                     // after the right frame  is slid out of view, hide it
                     $currentFrame.hide()
 
-                        // remvoe the css class since this is no longer the current frame
-                        .toggleClass(settings.currentFrameClass);
+                        // remove the css class since this is no longer the current frame
+                        .removeClass(settings.currentFrameClass);
 
                     // the right frame is now current
-                    $prevFrame.toggleClass(settings.currentFrameClass);
+                    if (!$prevFrame.hasClass(settings.currentFrameClass))
+                        $prevFrame.addClass(settings.currentFrameClass);
                 });
     };
 }

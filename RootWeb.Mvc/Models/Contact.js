@@ -1,10 +1,9 @@
 ﻿/// <reference path="../scripts/jquery-1.8.0.js" />
 /// <reference path="../scripts/knockout-2.1.0.js" />
 /// <reference path="../scripts/knockout.validation.js" />
-/// <reference path="../scripts/backbone.js" />
 /// <reference path="../scripts/other/slider.js" />
 /// <reference path="../scripts/recaptcha_ajax.js" />
-
+/// <reference path="../scripts/sammy/sammy.js" />
 
 ko.validation.rules['recaptcha'] = {
     async: true,
@@ -29,17 +28,7 @@ ko.validation.registerExtenders();
 function ContactViewModel() {
     // fire up slider, history, router, and initialize page
     var self = this,
-        slider = new Slider({}),
-        router = new Backbone.Router({
-            routes: {
-                'preview': 'preview',
-                'compose': 'compose',
-                'sent': 'sent'
-            }
-        });
-
-    Backbone.history.start();
-    router.navigate('//compose', { replace: true });
+        slider = new Slider({});
 
     // compose viewmodel card
     // defaults
@@ -90,18 +79,6 @@ function ContactViewModel() {
         return remaining == 1 || remaining == -1 ? 'character' : 'characters';
     });
 
-    // click button to preview message
-    self.composeViewModel.preview = function (viewModel, e) {
-        if (self.composeViewModel.isValid()) {
-            router.navigate('//preview');
-        }
-        else {
-            self.composeViewModel.errors.showAllMessages();
-        }
-        if (e) e.preventDefault();
-        return false;
-    };
-
     // preview viewmodel card
     // defaults
     self.previewViewModel = {
@@ -131,7 +108,7 @@ function ContactViewModel() {
             }
             else {
                 var $recaptchaBox = $(self.previewViewModel.recaptchaBox);
-                $recaptchaBox.fadeOut('fast', function() {
+                $recaptchaBox.fadeOut('fast', function () {
                     Recaptcha.reload();
                     $recaptchaBox.fadeIn();
                 });
@@ -147,6 +124,7 @@ function ContactViewModel() {
     };
 
     // send the message
+    self.isSent = ko.observable(false);
     self.previewViewModel.send = function (viewModel, e) {
         if (!self.previewViewModel.isValid()) {
             self.previewViewModel.errors.showAllMessages();
@@ -159,14 +137,15 @@ function ContactViewModel() {
                 challenge: $('#recaptcha_challenge_field').val(),
                 response: self.previewViewModel.recaptchaResponse()
             })
-            .success(function(response) {
+            .success(function (response) {
                 alert('successful response ' + response);
+                self.isSent(true);
+                self.sammy.runRoute('get', '#/sent/');
             })
-            .error(function(response, error, message) {
+            .error(function (response, error, message) {
                 alert('There was an error: ' + message);
             });
         }
-        //router.navigate('//sent', { replace: true });
         if (e) e.preventDefault();
         return false;
     };
@@ -179,17 +158,18 @@ function ContactViewModel() {
     // submit the form
     self.submit = function () {
         if ($('#compose').hasClass('current')) {
-            self.composeViewModel.preview(self);
+            self.sammy.runRoute('get', '#/preview/');
         }
         else if ($('#preview').hasClass('current')) {
             var response = $('#recaptcha_response_field').val();
             self.previewViewModel.recaptchaResponse('');
             self.previewViewModel.recaptchaResponse(response);
         }
+        return false;
     };
 
     // disable tabbing to hidden cards
-    self.disableCard = function($container) {
+    self.disableCard = function ($container) {
         $container.find('input, textarea, a').attr('tabindex', -1)
             .attr('data-tabindex-set', true).data('tabindex-set', true);
     };
@@ -205,46 +185,94 @@ function ContactViewModel() {
     };
 
     // disable tabbing to other cards
-    self.disableCards = function() {
-        $('#preview, #sent').each(function() {
+    self.disableCards = function () {
+        $('#preview, #sent').each(function () {
             self.disableCard($(this));
         });
     };
     ko.computed(self.disableCards);
 
-    // slide to compose card
-    router.on('route:compose', function () {
-        if ($('#preview').hasClass('current')) {
-            slider.prev();
-        }
-        else if ($('#sent').hasClass('current')) {
-            history.back();
-        }
-        self.disableCard($('#preview'));
-        self.disableCard($('#sent'));
-        self.enableCard($('#compose'));
-    });
+    location.hash = '#/compose/';
+    self.sammy = Sammy(function () {
 
-    // slide to preview card
-    router.on('route:preview', function () {
-        if ($('#compose').hasClass('current')) {
-            slider.next();
-        }
-        else if ($('#sent').hasClass('current')) {
-            router.navigate('//compose', { replace: true });
-        }
-        self.disableCard($('#compose'));
-        self.disableCard($('#sent'));
-        self.enableCard($('#preview'));
-    });
+        this.use(Sammy.Title);
+        this.setTitle('Contact me:');
 
-    // slide to sent card
-    router.on('route:sent', function () {
-        if ($('#preview').hasClass('current')) {
-            slider.next();
-        }
-        self.disableCard($('#preview'));
-        self.disableCard($('#compose'));
-        self.enableCard($('#sent'));
+        // slide to preview card
+        this.before('#/preview/', function () {
+            if ($('#compose').hasClass('current')) {
+                if (!self.composeViewModel.isValid()) {
+                    if (location.hash == '#/preview/')
+                        history.back();
+                    return false;
+                } else if (location.hash != '#/preview/') {
+                    location.hash = '#/preview/';
+                    return false;
+                }
+            }
+            return true;
+        });
+        this.get('#/preview/', function () {
+            this.title('preview your message');
+            if ($('#compose').hasClass('current')) {
+                slider.next();
+            }
+            else if ($('#sent').hasClass('current')) {
+                slider.prev();
+            }
+            self.disableCard($('#compose'));
+            self.disableCard($('#sent'));
+            self.enableCard($('#preview'));
+        });
+
+        // slide to compose card
+        this.get('#/compose/', function () {
+            this.title('compose a message');
+            if ($('#preview').hasClass('current')) {
+                slider.prev();
+            }
+            else if ($('#sent').hasClass('current')) {
+                slider.prev(2);
+            }
+            self.disableCard($('#preview'));
+            self.disableCard($('#sent'));
+            self.enableCard($('#compose'));
+        });
+
+        // slide to sent card
+        this.before('#/sent/', function () {
+            if ($('#preview').hasClass('current')) {
+                if (location.hash != '#/sent/') {
+                    this.app.setLocation('#/sent/');
+                    return false;
+                }
+            }
+            else if ($('#sent').hasClass('current')) {
+                return false;
+            }
+            return true;
+        });
+        this.get('#/sent/', function () {
+            this.title('message sent');
+            if ($('#preview').hasClass('current')) {
+                slider.next();
+            }
+            if ($('#compose').hasClass('current')) {
+                slider.next(2);
+            }
+            self.disableCard($('#preview'));
+            self.disableCard($('#compose'));
+            self.enableCard($('#sent'));
+        });
+
+        this.before('#/submit/', function () {
+            return false;
+        });
+
+        // startup route
+        this.get('', function () {
+            this.app.runRoute('get', '#/compose/');
+        });
     });
+    self.sammy.run();
 }
