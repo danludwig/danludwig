@@ -140,7 +140,7 @@ function ContactViewModel() {
             .success(function (response) {
                 alert('successful response ' + response);
                 self.isSent(true);
-                self.sammy.runRoute('get', '#/sent/');
+                self.sammy.setLocation('#/sent/');
             })
             .error(function (response, error, message) {
                 alert('There was an error: ' + message);
@@ -158,7 +158,7 @@ function ContactViewModel() {
     // submit the form
     self.submit = function () {
         if ($('#compose').hasClass('current')) {
-            self.sammy.runRoute('get', '#/preview/');
+            self.sammy.setLocation('#/preview/');
         }
         else if ($('#preview').hasClass('current')) {
             var response = $('#recaptcha_response_field').val();
@@ -192,7 +192,6 @@ function ContactViewModel() {
     };
     ko.computed(self.disableCards);
 
-    location.hash = '#/compose/';
     self.sammy = Sammy(function () {
 
         this.use(Sammy.Title);
@@ -202,11 +201,7 @@ function ContactViewModel() {
         this.before('#/preview/', function () {
             if ($('#compose').hasClass('current')) {
                 if (!self.composeViewModel.isValid()) {
-                    if (location.hash == '#/preview/')
-                        history.back();
-                    return false;
-                } else if (location.hash != '#/preview/') {
-                    location.hash = '#/preview/';
+                    history.back();
                     return false;
                 }
             }
@@ -240,18 +235,6 @@ function ContactViewModel() {
         });
 
         // slide to sent card
-        this.before('#/sent/', function () {
-            if ($('#preview').hasClass('current')) {
-                if (location.hash != '#/sent/') {
-                    this.app.setLocation('#/sent/');
-                    return false;
-                }
-            }
-            else if ($('#sent').hasClass('current')) {
-                return false;
-            }
-            return true;
-        });
         this.get('#/sent/', function () {
             this.title('message sent');
             if ($('#preview').hasClass('current')) {
@@ -271,7 +254,7 @@ function ContactViewModel() {
 
         // startup route
         this.get('', function () {
-            this.app.runRoute('get', '#/compose/');
+            this.app.setLocation('#/compose/');
         });
     });
     self.sammy.run();

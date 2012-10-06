@@ -36,10 +36,30 @@ input[type=submit], input[type=reset], input[type=button], button {
     border: solid 1px #aaa;
     padding: 8px 12px;
     @include font-height(15px, 1.2);
+    vertical-align: middle;
     text-transform: uppercase;
     @include font-ms;
     @include linear-bg-gradient(#dddddd, #cccccc);
     cursor: pointer;
+    &[disabled] {
+        cursor: default;
+    }
+    &.blue {
+        @include linear-bg-gradient(#0093f4, #007acc);
+        color: #eee !important;
+        @include opacity(0.85);
+        border: 0px none;
+        padding-top: 9px;
+        padding-bottom: 9px;
+        @include box-shadow(0, 1px, 2px, 0, #000);
+        &:hover {
+            @include opacity(1);
+        }
+        &:active {
+            color: #ee3 !important;
+            @include linear-bg-gradient(#007acc, #0093f4);
+        }
+    }
 }
 
 
@@ -69,6 +89,8 @@ a.button {
     &.progress {
         border: 0px none;
         color: #eee !important;
+        padding-top: 9px;
+        padding-bottom: 9px;
         @include text-shadow(1px, 1px, 0, #333333);
         &:active {
             color: #ee3 !important;

@@ -46,8 +46,8 @@
                                         Request.UrlReferrer.AbsolutePath != Request.Url.AbsolutePath
                                             ? Request.UrlReferrer.ToString() : "/";
                     }
-                    <a class="blue progress button" href="#/preview/">Preview &amp; Send</a>
-                    <input type="submit" value="Preview & Send" data-bind="enable: !$parent.isSent()" />
+                    @*<a class="blue progress button" href="#/preview/">Preview &amp; Send</a>*@
+                    <input class="blue" type="submit" value="Preview & Send" data-bind="enable: !$parent.isSent()" />
                     <a class="regress button" href="@cancelUrl">Cancel</a>
                 </footer>
             </section>
@@ -90,8 +90,8 @@
                     </div>
                 </div>
                 <footer>
-                    <a class="blue progress button" data-bind="click: send">Send now</a>
-                    <input type="submit" value="Send now" data-bind="enable: !$parent.isSent()" />
+                    @*<a class="blue progress button" data-bind="click: send">Send now</a>*@
+                    <input type="submit" value="Send now" class="blue" data-bind="enable: !$parent.isSent()" />
                     <a class="regress button" href="#/compose/" data-bind="click: compose">Go back and edit</a>
                 </footer>
             </section>
