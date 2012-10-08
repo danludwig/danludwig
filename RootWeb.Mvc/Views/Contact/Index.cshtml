@@ -47,7 +47,7 @@
                                             ? Request.UrlReferrer.ToString() : "/";
                     }
                     @*<a class="blue progress button" href="#/preview/">Preview &amp; Send</a>*@
-                    <input class="blue" type="submit" value="Preview & Send" data-bind="enable: !$parent.isSent()" />
+                    <input class="blue" type="submit" value="Preview & Send" data-bind="enable: !$parent.isSent() && !$parent.isSending()" />
                     <a class="regress button" href="@cancelUrl">Cancel</a>
                 </footer>
             </section>
@@ -85,13 +85,16 @@
                             <span class="spinner-message" data-bind="visible: isValidating">
                                 <img src="~/images/spinner.gif" alt="wait icon" />
                                 Validating your humanity...</span>
+                            <span class="spinner-message" data-bind="visible: $parent.isSending">
+                                <img src="~/images/spinner.gif" alt="wait icon" />
+                                Sending your message...</span>
                         </div>
 
                     </div>
                 </div>
                 <footer>
                     @*<a class="blue progress button" data-bind="click: send">Send now</a>*@
-                    <input type="submit" value="Send now" class="blue" data-bind="enable: !$parent.isSent()" />
+                    <input type="submit" value="Send now" class="blue" data-bind="enable: !$parent.isSent() && !$parent.isSending()" />
                     <a class="regress button" href="#/compose/" data-bind="click: compose">Go back and edit</a>
                 </footer>
             </section>

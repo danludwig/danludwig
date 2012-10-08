@@ -23,6 +23,20 @@ ko.validation.rules['recaptcha'] = {
     },
     message: 'Nope, that\'s wrong. Try another challenge.'
 };
+ko.validation.rules['maildomain'] = {
+    async: false,
+    validator: function (val, vm) {
+        return !vm.invalidMailDomain();
+    },
+    message: 'The domain of this email address does not exist.'
+};
+ko.validation.rules['servererror'] = {
+    async: false,
+    validator: function (val, vm) {
+        return !vm.serverError();
+    },
+    message: 'There was an error on the server.'
+};
 ko.validation.registerExtenders();
 
 function ContactViewModel() {
@@ -38,9 +52,18 @@ function ContactViewModel() {
     };
 
     // email input
+    var invalidEmailMessage = 'Come on, we both know this is not a real email address.';
+    self.composeViewModel.invalidMailDomain = ko.observable(false);
     self.composeViewModel.email = ko.observable('asdf@asdf.asdf').extend({
         required: { message: 'I\'m going to need your email address.' },
-        email: { message: 'Come on, we both know this is not a real email address.' }
+        email: { message: invalidEmailMessage },
+        maildomain: {
+            message: invalidEmailMessage,
+            params: self.composeViewModel
+        }
+    });
+    self.composeViewModel.email.subscribe(function() {
+        self.composeViewModel.invalidMailDomain(false);
     });
 
     // subject input
@@ -90,9 +113,14 @@ function ContactViewModel() {
     self.previewViewModel.message = ko.computed(self.composeViewModel.message);
 
     // recaptcha input
+    self.previewViewModel.serverError = ko.observable(false);
     self.previewViewModel.recaptchaResponse = ko.observable().extend({
         required: { message: 'Prove you are a human.' },
-        recaptcha: true
+        recaptcha: true,
+        servererror: {
+            message: 'Oops, there was an unexpected error on the server :(',
+            params: self.previewViewModel
+        }
     });
 
     // recaptcha element
@@ -125,11 +153,13 @@ function ContactViewModel() {
 
     // send the message
     self.isSent = ko.observable(false);
+    self.isSending = ko.observable(false);
     self.previewViewModel.send = function (viewModel, e) {
         if (!self.previewViewModel.isValid()) {
             self.previewViewModel.errors.showAllMessages();
         }
         else if (!self.previewViewModel.isValidating()) {
+            self.isSending(true);
             $.post('/contact', {
                 email: self.composeViewModel.email(),
                 subject: self.composeViewModel.subject(),
@@ -137,13 +167,43 @@ function ContactViewModel() {
                 challenge: $('#recaptcha_challenge_field').val(),
                 response: self.previewViewModel.recaptchaResponse()
             })
-            .success(function (response) {
-                alert('successful response ' + response);
-                self.isSent(true);
-                self.sammy.setLocation('#/sent/');
+            .complete(function() {
+                self.isSending(false);
             })
-            .error(function (response, error, message) {
-                alert('There was an error: ' + message);
+            .success(function (response) {
+                var $recaptchaBox;
+                if (response === true) {
+                    self.isSent(true);
+                    self.sammy.setLocation('#/sent/');
+                }
+                else if (response === 'domain') {
+                    self.composeViewModel.invalidMailDomain(true);
+                    self.composeViewModel.errors.showAllMessages();
+                    $recaptchaBox = $(self.previewViewModel.recaptchaBox);
+                    $recaptchaBox.fadeOut('fast', function () {
+                        Recaptcha.reload();
+                        $recaptchaBox.fadeIn();
+                    });
+                    history.back();
+                }
+                else {
+                    self.previewViewModel.serverError(true);
+                    self.previewViewModel.errors.showAllMessages();
+                    $recaptchaBox = $(self.previewViewModel.recaptchaBox);
+                    $recaptchaBox.fadeOut('fast', function () {
+                        Recaptcha.reload();
+                        $recaptchaBox.fadeIn();
+                    });
+                }
+            })
+            .error(function () {
+                self.previewViewModel.serverError(true);
+                self.previewViewModel.errors.showAllMessages();
+                var $recaptchaBox = $(self.previewViewModel.recaptchaBox);
+                $recaptchaBox.fadeOut('fast', function () {
+                    Recaptcha.reload();
+                    $recaptchaBox.fadeIn();
+                });
             });
         }
         if (e) e.preventDefault();
@@ -157,8 +217,14 @@ function ContactViewModel() {
 
     // submit the form
     self.submit = function () {
+        self.previewViewModel.serverError(false);
         if ($('#compose').hasClass('current')) {
-            self.sammy.setLocation('#/preview/');
+            if (self.composeViewModel.isValid()) {
+                self.sammy.setLocation('#/preview/');
+            }
+            else {
+                self.composeViewModel.errors.showAllMessages();
+            }
         }
         else if ($('#preview').hasClass('current')) {
             var response = $('#recaptcha_response_field').val();
